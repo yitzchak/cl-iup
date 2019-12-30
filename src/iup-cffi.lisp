@@ -1,8 +1,8 @@
-;;;; cl-iup-cffi.lisp
+;;;; iup-cffi.lisp
 
-(in-package #:cl-iup)
+(in-package #:iup/cffi)
 
-;;; "cl-iup-cffi" goes here. Hacks and glory await!
+;;; "iup/cffi" goes here. Hacks and glory await!
 
 (define-foreign-library iup
     (:unix "libiup.so")
@@ -721,13 +721,13 @@
 ;; Constants
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
-;; Common Return Values 
+;; Common Return Values
 (defconstant IUP_ERROR     1)
 (defconstant IUP_NOERROR   0)
 (defconstant IUP_OPENED   -1)
 (defconstant IUP_INVALID  -1)
 ;;--------------------------------------------------------------------------------------
-;; Callback Return Values            
+;; Callback Return Values
 (defconstant IUP_IGNORE    -1)
 (defconstant IUP_DEFAULT   -2)
 (defconstant IUP_CLOSE     -3)
@@ -743,21 +743,21 @@
 (defconstant IUP_TOP       IUP_LEFT)
 (defconstant IUP_BOTTOM    IUP_RIGHT)
 ;;--------------------------------------------------------------------------------------
-; Mouse Button Values and Macros                         
+; Mouse Button Values and Macros
 (defconstant IUP_BUTTON1   #\1)
 (defconstant IUP_BUTTON2   #\2)
 (defconstant IUP_BUTTON3   #\3)
 (defconstant IUP_BUTTON4   #\4)
 (defconstant IUP_BUTTON5   #\5)
 ;;--------------------------------------------------------------------------------------
-; Pre-Defined Masks                               
+; Pre-Defined Masks
 (defparameter IUP_MASK_FLOAT    "[+/-]?(/d+/.?/d*|/./d+)")
 (defparameter IUP_MASK_UFLOAT   "(/d+/.?/d*|/./d+)")
 (defparameter IUP_MASK_EFLOAT   "[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?")
 (defparameter IUP_MASK_INT      "[+/-]?/d+")
 (defparameter IUP_MASK_UINT     "/d+")
 ;;--------------------------------------------------------------------------------------
-; IupGetParam Callback situations                    
+; IupGetParam Callback situations
 (defconstant IUP_GETPARAM_OK     -1)
 (defconstant IUP_GETPARAM_INIT   -2)
 (defconstant IUP_GETPARAM_CANCEL -3)
@@ -765,14 +765,14 @@
 ;;--------------------------------------------------------------------------------------
 ;; Enums
 ;;--------------------------------------------------------------------------------------
-; SHOW_CB Callback Values                                
+; SHOW_CB Callback Values
 (defconstant IUP_SHOW 0)
 (defconstant IUP_RESTORE 1)
 (defconstant IUP_MINIMIZE 2)
 (defconstant IUP_MAXIMIZE 3)
 (defconstant IUP_HIDE 4)
 ;;--------------------------------------------------------------------------------------
-; SCROLL_CB Callback Values                              
+; SCROLL_CB Callback Values
 (defconstant IUP_SBUP 0)
 (defconstant IUP_SBDN 1)
 (defconstant IUP_SBPGUP 2)
@@ -786,7 +786,7 @@
 (defconstant IUP_SBPOSH 10)
 (defconstant IUP_SBDRAGH 11)
 ;;--------------------------------------------------------------------------------------
-; Record Input Modes                                 
+; Record Input Modes
 (defconstant IUP_RECBINARY 0)
 (defconstant IUP_RECTEXT 1)
 ;;--------------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
-(ql:quickload "cl-iup")
+(ql:quickload "iup")
+
 (defpackage #:test-iup
-  (:use :cl :cl-iup)
+  (:use :cl :iup :iup/cffi)
   (:export :main-test))
 
 (in-package #:test-iup)
@@ -10,11 +11,11 @@
 
 (iup-defcallback msg-cb ()
   (progn
-    (cl-iup:iupmessage "TestMSG" 
+    (iup/cffi:iupmessage "TestMSG"
 		       (format nil "Hello, IUP!~%Version: ~A~%~t(~A)" 
 			       (IupVersion)
 			       (IupVersionDate)))
-    cl-iup:IUP_DEFAULT))
+    iup/cffi:IUP_DEFAULT))
 
 (defparameter *dialog* nil)
 (defparameter *quit-btn* nil)
@@ -50,7 +51,7 @@
 			*list*
 			(IupGetAttribute
 			 *list* "VALUE")))
-	   IUP_DEFAULT)))
+	   iup/cffi:IUP_DEFAULT)))
     
 
     (setf *vbox*

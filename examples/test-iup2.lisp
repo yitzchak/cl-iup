@@ -1,8 +1,8 @@
-(ql:quickload "cl-iup")
+(ql:quickload "iup")
 
 ;;=======================================================================
 (defpackage #:test-iup-2-t
-  (:use :cl :cl-iup :iterate)
+  (:use :cl :iup :iup/cffi :iterate)
   (:export :tmpl-1))
 (in-package #:test-iup-2-t)
 
@@ -12,7 +12,7 @@
   (*btn-* = "button" :title "-" :expand :no :rastersize "25x25"))
 ;;=======================================================================
 (defpackage #:test-iup-2
-  (:use :cl :cl-iup :iterate)
+  (:use :cl :iup :iup/cffi :iterate)
   (:export :main-test))
 (in-package #:test-iup-2)
 ;;-----------------------------------------------------------------------       

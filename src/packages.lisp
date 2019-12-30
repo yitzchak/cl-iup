@@ -1,33 +1,13 @@
 ;;;; package.lisp
 
-(defpackage #:cl-iup
+(defpackage #:iup/cffi
   (:use #:cl #:cffi #:iterate)
   (:export
-   :iup-open
-   :with-iup
-   :iup-defcallback
-   :iup-defcallback-default
-
-   :iup-register-event
-   :iup-defevent
-   :iup-defevent-default
-   :iup-set-all-events
-
-   :iup-lambda-callback
-   :iup-hbox
-   :iup-vbox
-   :iup-grid-box
-   :iup-tabs
-   :iup-attribute
-   :iup-set-attributes
-
-   :iup-defgui
-   :iup-defgui-template
    ;;=============================================
    ;; CFFI
    ;;
    ;;---------------------------------------------
-   ;; Main API                                     
+   ;; Main API
    ;;---------------------------------------------
    :IupOpen
    :IupClose
@@ -151,7 +131,7 @@
    :IupCreatep
 
    ;;---------------------------------------------
-   ;; Elements                                     
+   ;; Elements
    ;;---------------------------------------------
    :IupFill
    :IupRadio
@@ -206,18 +186,18 @@
    ;; Deprecated controls, use SPIN attribute of IupText
    :IupSpin
    :IupSpinbox
-   ;; IupImage utility 
+   ;; IupImage utility
    :IupSaveImageAsText
-   ;; IupText and IupScintilla utilities 
+   ;; IupText and IupScintilla utilities
    :IupTextConvertLinColToPos
    :IupTextConvertPosToLinCol
-   ;; IupText, IupList, IupTree, IupMatrix and IupScintilla utility 
+   ;; IupText, IupList, IupTree, IupMatrix and IupScintilla utility
    :IupConvertXYToPos
-   ;; IupTree utilities 
+   ;; IupTree utilities
    :IupTreeSetUserId
    :IupTreeGetUserId
    :IupTreeGetId
-   ;; Deprecated IupTree utilities, use Iup*AttributeId functions 
+   ;; Deprecated IupTree utilities, use Iup*AttributeId functions
    :IupTreeSetAttribute
    :IupTreeStoreAttribute
    :IupTreeGetAttribute
@@ -227,7 +207,7 @@
    :IupTreeSetAttributeHandle
 
    ;;---------------------------------------------
-   ;; Pre-definided dialogs                          
+   ;; Pre-definided dialogs
    ;;---------------------------------------------
    :IupFileDlg
    :IupMessageDlg
@@ -252,19 +232,19 @@
    ;;---------------------------------------------
    ;; CONSTANTS
    ;;---------------------------------------------
-   ;; Common Return Values                              
+   ;; Common Return Values
    :IUP_ERROR
    :IUP_NOERROR
    :IUP_OPENED
    :IUP_INVALID
    ;;---------------------------------------------
-   ;; Callback Return Values                            
+   ;; Callback Return Values
    :IUP_IGNORE
    :IUP_DEFAULT
    :IUP_CLOSE
    :IUP_CONTINUE
    ;;---------------------------------------------
-   ;; IupPopup and IupShowXY Parameter Values                   
+   ;; IupPopup and IupShowXY Parameter Values
    :IUP_CENTER
    :IUP_LEFT
    :IUP_RIGHT
@@ -274,21 +254,21 @@
    :IUP_TOP
    :IUP_BOTTOM
    ;;---------------------------------------------
-   ;; Mouse Button Values and Macros                        
+   ;; Mouse Button Values and Macros
    :IUP_BUTTON1
    :IUP_BUTTON2
    :IUP_BUTTON3
    :IUP_BUTTON4
    :IUP_BUTTON5
    ;;---------------------------------------------
-   ;; Pre-Defined Masks                              
+   ;; Pre-Defined Masks
    :IUP_MASK_FLOAT
    :IUP_MASK_UFLOAT
    :IUP_MASK_EFLOAT
    :IUP_MASK_INT
    :IUP_MASK_UINT
    ;;---------------------------------------------
-   ;; IupGetParam Callback situations                   
+   ;; IupGetParam Callback situations
    :IUP_GETPARAM_OK
    :IUP_GETPARAM_INIT
    :IUP_GETPARAM_CANCEL
@@ -297,13 +277,37 @@
    ;;---------------------------------------------
    ;; Enums
    ;;---------------------------------------------
-   ;; SHOW_CB Callback Values                               
+   ;; SHOW_CB Callback Values
    :IUP_SHOW :IUP_RESTORE :IUP_MINIMIZE :IUP_MAXIMIZE :IUP_HIDE
    ;;---------------------------------------------
-   ;; SCROLL_CB Callback Values                             
+   ;; SCROLL_CB Callback Values
    :IUP_SBUP :IUP_SBDN :IUP_SBPGUP :IUP_SBPGDN :IUP_SBPOSV :IUP_SBDRAGV
    :IUP_SBLEFT :IUP_SBRIGHT :IUP_SBPGLEFT :IUP_SBPGRIGHT :IUP_SBPOSH :IUP_SBDRAGH
    ;;---------------------------------------------
-   ;; Record Input Modes                                
+   ;; Record Input Modes
    :IUP_RECBINARY :IUP_RECTEXT
    ))
+
+(defpackage #:iup
+  (:use #:cl #:cffi #:iterate)
+  (:export
+   :iup-open
+   :with-iup
+   :iup-defcallback
+   :iup-defcallback-default
+
+   :iup-register-event
+   :iup-defevent
+   :iup-defevent-default
+   :iup-set-all-events
+
+   :iup-lambda-callback
+   :iup-hbox
+   :iup-vbox
+   :iup-grid-box
+   :iup-tabs
+   :iup-attribute
+   :iup-set-attributes
+
+   :iup-defgui
+   :iup-defgui-template))   
