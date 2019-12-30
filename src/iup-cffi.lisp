@@ -15,7 +15,7 @@
 ;; Main API
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
-(defcfun ("IupOpen" IupOpen) :int
+(defcfun ("IupOpen" IupOpen) :iup-status
   (argc :pointer)
   (argv :pointer))
 
@@ -23,11 +23,11 @@
 
 (defcfun ("IupImageLibOpen" IupImageLibOpen) :void)
 ;;--------------------------------------------------------------------------------------
-(defcfun ("IupMainLoop" IupMainLoop) :int)
+(defcfun ("IupMainLoop" IupMainLoop) :iup-status)
 
-(defcfun ("IupLoopStep" IupLoopStep) :int)
+(defcfun ("IupLoopStep" IupLoopStep) :iup-action)
 
-(defcfun ("IupLoopStepWait" IupLoopStepWait) :int)
+(defcfun ("IupLoopStepWait" IupLoopStepWait) :iup-action)
 
 (defcfun ("IupMainLoopLevel" IupMainLoopLevel) :int)
 
@@ -35,11 +35,11 @@
 
 (defcfun ("IupExitLoop" IupExitLoop) :void)
 ;;--------------------------------------------------------------------------------------
-(defcfun ("IupRecordInput" IupRecordInput) :int
+(defcfun ("IupRecordInput" IupRecordInput) :iup-status
   (filename :string)
-  (mode :int))
+  (mode :iup-record-mode))
 
-(defcfun ("IupPlayInput" IupPlayInput) :int
+(defcfun ("IupPlayInput" IupPlayInput) :iup-status
   (filename :string))
 ;;--------------------------------------------------------------------------------------
 (defcfun ("IupUpdate" IupUpdate) :void
@@ -132,23 +132,23 @@
   (new_parent :pointer)
   (ref_child :pointer))
 ;;--------------------------------------------------------------------------------------
-(defcfun ("IupPopup" IupPopup) :int
+(defcfun ("IupPopup" IupPopup) :iup-status
   (ih :pointer)
-  (x :int)
-  (y :int))
+  (x :iup-position)
+  (y :iup-position))
 
-(defcfun ("IupShow" IupShow) :int
+(defcfun ("IupShow" IupShow) :iup-status
   (ih :pointer))
 
-(defcfun ("IupShowXY" IupShowXY) :int
+(defcfun ("IupShowXY" IupShowXY) :iup-status
   (ih :pointer)
-  (x :int)
-  (y :int))
+  (x :iup-position)
+  (y :iup-position))
 
-(defcfun ("IupHide" IupHide) :int
+(defcfun ("IupHide" IupHide) :iup-status
   (ih :pointer))
 
-(defcfun ("IupMap" IupMap) :int
+(defcfun ("IupMap" IupMap) :iup-status
   (ih :pointer))
 
 (defcfun ("IupUnmap" IupUnmap) :void
@@ -721,35 +721,6 @@
 ;; Constants
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
-;; Common Return Values
-(defconstant IUP_ERROR     1)
-(defconstant IUP_NOERROR   0)
-(defconstant IUP_OPENED   -1)
-(defconstant IUP_INVALID  -1)
-;;--------------------------------------------------------------------------------------
-;; Callback Return Values
-(defconstant IUP_IGNORE    -1)
-(defconstant IUP_DEFAULT   -2)
-(defconstant IUP_CLOSE     -3)
-(defconstant IUP_CONTINUE  -4)
-;;--------------------------------------------------------------------------------------
-;; IupPopup and IupShowXY Parameter Values
-(defconstant IUP_CENTER        #xFFFF)
-(defconstant IUP_LEFT          #xFFFE)
-(defconstant IUP_RIGHT         #xFFFD)
-(defconstant IUP_MOUSEPOS      #xFFFC)
-(defconstant IUP_CURRENT       #xFFFB)
-(defconstant IUP_CENTERPARENT  #xFFFA)
-(defconstant IUP_TOP       IUP_LEFT)
-(defconstant IUP_BOTTOM    IUP_RIGHT)
-;;--------------------------------------------------------------------------------------
-; Mouse Button Values and Macros
-(defconstant IUP_BUTTON1   #\1)
-(defconstant IUP_BUTTON2   #\2)
-(defconstant IUP_BUTTON3   #\3)
-(defconstant IUP_BUTTON4   #\4)
-(defconstant IUP_BUTTON5   #\5)
-;;--------------------------------------------------------------------------------------
 ; Pre-Defined Masks
 (defparameter IUP_MASK_FLOAT    "[+/-]?(/d+/.?/d*|/./d+)")
 (defparameter IUP_MASK_UFLOAT   "(/d+/.?/d*|/./d+)")
@@ -762,31 +733,4 @@
 (defconstant IUP_GETPARAM_INIT   -2)
 (defconstant IUP_GETPARAM_CANCEL -3)
 (defconstant IUP_GETPARAM_HELP   -4)
-;;--------------------------------------------------------------------------------------
-;; Enums
-;;--------------------------------------------------------------------------------------
-; SHOW_CB Callback Values
-(defconstant IUP_SHOW 0)
-(defconstant IUP_RESTORE 1)
-(defconstant IUP_MINIMIZE 2)
-(defconstant IUP_MAXIMIZE 3)
-(defconstant IUP_HIDE 4)
-;;--------------------------------------------------------------------------------------
-; SCROLL_CB Callback Values
-(defconstant IUP_SBUP 0)
-(defconstant IUP_SBDN 1)
-(defconstant IUP_SBPGUP 2)
-(defconstant IUP_SBPGDN 3)
-(defconstant IUP_SBPOSV 4)
-(defconstant IUP_SBDRAGV 5)
-(defconstant IUP_SBLEFT 6)
-(defconstant IUP_SBRIGHT 7)
-(defconstant IUP_SBPGLEFT 8)
-(defconstant IUP_SBPGRIGHT 9)
-(defconstant IUP_SBPOSH 10)
-(defconstant IUP_SBDRAGH 11)
-;;--------------------------------------------------------------------------------------
-; Record Input Modes
-(defconstant IUP_RECBINARY 0)
-(defconstant IUP_RECTEXT 1)
-;;--------------------------------------------------------------------------------------
+

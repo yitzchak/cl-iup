@@ -227,66 +227,7 @@
    :IupGetParamv
 
    :IupLayoutDialog
-   :IupElementPropertiesDialog
-
-   ;;---------------------------------------------
-   ;; CONSTANTS
-   ;;---------------------------------------------
-   ;; Common Return Values
-   :IUP_ERROR
-   :IUP_NOERROR
-   :IUP_OPENED
-   :IUP_INVALID
-   ;;---------------------------------------------
-   ;; Callback Return Values
-   :IUP_IGNORE
-   :IUP_DEFAULT
-   :IUP_CLOSE
-   :IUP_CONTINUE
-   ;;---------------------------------------------
-   ;; IupPopup and IupShowXY Parameter Values
-   :IUP_CENTER
-   :IUP_LEFT
-   :IUP_RIGHT
-   :IUP_MOUSEPOS
-   :IUP_CURRENT
-   :IUP_CENTERPARENT
-   :IUP_TOP
-   :IUP_BOTTOM
-   ;;---------------------------------------------
-   ;; Mouse Button Values and Macros
-   :IUP_BUTTON1
-   :IUP_BUTTON2
-   :IUP_BUTTON3
-   :IUP_BUTTON4
-   :IUP_BUTTON5
-   ;;---------------------------------------------
-   ;; Pre-Defined Masks
-   :IUP_MASK_FLOAT
-   :IUP_MASK_UFLOAT
-   :IUP_MASK_EFLOAT
-   :IUP_MASK_INT
-   :IUP_MASK_UINT
-   ;;---------------------------------------------
-   ;; IupGetParam Callback situations
-   :IUP_GETPARAM_OK
-   :IUP_GETPARAM_INIT
-   :IUP_GETPARAM_CANCEL
-   :IUP_GETPARAM_HELP
-
-   ;;---------------------------------------------
-   ;; Enums
-   ;;---------------------------------------------
-   ;; SHOW_CB Callback Values
-   :IUP_SHOW :IUP_RESTORE :IUP_MINIMIZE :IUP_MAXIMIZE :IUP_HIDE
-   ;;---------------------------------------------
-   ;; SCROLL_CB Callback Values
-   :IUP_SBUP :IUP_SBDN :IUP_SBPGUP :IUP_SBPGDN :IUP_SBPOSV :IUP_SBDRAGV
-   :IUP_SBLEFT :IUP_SBRIGHT :IUP_SBPGLEFT :IUP_SBPGRIGHT :IUP_SBPOSH :IUP_SBDRAGH
-   ;;---------------------------------------------
-   ;; Record Input Modes
-   :IUP_RECBINARY :IUP_RECTEXT
-   ))
+   :IupElementPropertiesDialog))
 
 (defpackage #:iup
   (:use #:cl #:cffi #:iterate)

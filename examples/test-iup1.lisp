@@ -6,16 +6,13 @@
 
 (in-package #:test-iup)
 
-;;(cffi:defcallback quit-cb :int ()
-;;  cl-iup:IUP_CLOSE)
-
 (iup:iup-defcallback msg-cb ()
   (progn
     (iup/cffi:iupmessage "TestMSG"
 		       (format nil "Hello, IUP!~%Version: ~A~%~t(~A)" 
 			       (iup/cffi:IupVersion)
 			       (iup/cffi:IupVersionDate)))
-    iup/cffi:IUP_DEFAULT))
+    :default))
 
 (defparameter *dialog* nil)
 (defparameter *quit-btn* nil)
@@ -28,7 +25,7 @@
   (iup:with-iup
     (setf *quit-btn*  (iup/cffi:IupButton "Close" ""))
     (iup/cffi:IupSetCallback *quit-btn* "ACTION"
-		    (iup:iup-lambda-callback () iup/cffi:IUP_CLOSE))
+		    (iup:iup-lambda-callback () :close))
     
     (setf *msg-btn*  (iup/cffi:IupButton "IUP Version" ""))
     (iup/cffi:IupSetCallback *msg-btn* "ACTION" msg-cb)
@@ -51,7 +48,7 @@
 			*list*
 			(iup/cffi:IupGetAttribute
 			 *list* "VALUE")))
-	   iup/cffi:IUP_DEFAULT)))
+	   :default)))
     
 
     (setf *vbox*

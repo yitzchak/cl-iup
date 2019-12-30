@@ -30,18 +30,18 @@
 	(fn-args (get-fn-args args)))
     `(progn
        (defun ,name ,fn-args ,@body)
-       (cffi:defcallback ,cb-name :int ,args (,name ,@fn-args))
+       (cffi:defcallback ,cb-name :iup-action ,args (,name ,@fn-args))
        (define-symbol-macro ,name (cffi:get-callback ',cb-name)))))
 ;;--------------------------------------------------------------------------------------
 (defmacro iup-defcallback-default (name args &body body)
   `(iup-defcallback ,name ,args
      (progn
        ,@body
-       iup/cffi:IUP_DEFAULT)))
+       :default)))
 ;;--------------------------------------------------------------------------------------
 (defmacro iup-lambda-callback (args body)
   (let ((cb-name (gensym "%iup-cb-")))
-    `(cffi:get-callback (cffi:defcallback ,cb-name :int ,args ,body))))
+    `(cffi:get-callback (cffi:defcallback ,cb-name :iup-action ,args ,body))))
 ;;--------------------------------------------------------------------------------------
 ;=======================================================================================
 ;; IUP-DEFEVENT: in-current-package
@@ -62,7 +62,7 @@
     `(progn
        (iup-register-event ',object ,action ',cb-name)
        (defun ,name ,fn-args ,@body)
-       (cffi:defcallback ,cb-name :int ,args (,name ,@fn-args))
+       (cffi:defcallback ,cb-name :iup-action ,args (,name ,@fn-args))
        (define-symbol-macro ,name (cffi:get-callback ',cb-name)))))
 
 (defmacro iup-defevent-default ((object &key
@@ -75,7 +75,7 @@
   `(iup-defevent (,object :action ,action :name ,name :args ,args)
 		 (progn
 		   ,@body
-		   iup/cffi:IUP_DEFAULT)))
+		   :default)))
 ;;--------------------------------------------------------------------------------------
 (defmacro iup-set-all-events ()
   '(mapcar #'(lambda (x)
@@ -233,7 +233,7 @@
 ;;   `(iup-defevent (,object :action ,action :name ,name :args ,args)
 ;; 		 (progn
 ;; 		   ,@body
-;; 		   iup/cffi:IUP_DEFAULT)))
+;; 		   :default)))
 ;; ;;--------------------------------------------------------------------------------------
 ;; (defun %recur-accessor (accessors obj)
 ;;   (if (null accessors)
