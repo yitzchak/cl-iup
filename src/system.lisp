@@ -6,6 +6,12 @@
 
 (use-foreign-library iup)
 
+(defmacro with-ihandle-sequence (decl &body body)
+  `(let ((,(car decl) (foreign-alloc :pointer :initial-contents ,(cadr decl) :null-terminated-p t)))
+     (unwind-protect
+       (progn ,@body)
+       (foreign-free ,(car decl)))))
+
 (defcfun ("IupOpen" %start) :iup-status
   (argc :pointer)
   (argv :pointer))

@@ -132,31 +132,30 @@
    #:iup-createv
    #:iup-createp
 
-   ;;---------------------------------------------
-   ;; Elements
-   ;;---------------------------------------------
+   ;;Container Controls
    #:iup-fill
-   #:iup-radio
+   #:iup-space
+
+   #:cbox
+   #:grid-box
+   #:hbox
    #:vbox
-   ;#:iup-vboxv
-   #:iup-zbox
-   #:iup-zboxv
-   #:iup-hbox
-   #:iup-hboxv
+   #:zbox
 
-   #:iup-normalizer
-   #:iup-normalizerv
+   #:radio
+   #:normalizer
 
-   #:iup-cbox
-   #:iup-cboxv
-   #:iup-sbox
-   #:iup-split
-   #:iup-scroll-box
-   #:iup-grid-box
-   #:iup-grid-boxv
-   #:iup-expander
-
-   #:iup-frame
+   #:frame
+   #:flat-frame
+   #:tabs
+   #:flat-tabs
+   #:background-box
+   #:scroll-box
+   #:flat-scroll-box
+   #:detach-box
+   #:expander
+   #:sbox
+   #:split
 
    #:iup-image
    #:iup-image-rgb
@@ -181,8 +180,6 @@
    #:iup-clipboard
    #:iup-progress-bar
    #:iup-val
-   #:iup-tabs
-   #:iup-tabsv
    #:iup-tree
    #:iup-link
    ;; IupImage utility

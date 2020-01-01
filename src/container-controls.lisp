@@ -6,144 +6,136 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupRadio" iup-radio) :pointer
-  (child :pointer))
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupCbox" iup-cbox) :pointer
+;   (child :pointer)
+;   &rest)
 
-(defcfun ("IupVbox" %vbox) :pointer
-  (child :pointer)
-  &rest)
+(defcfun ("IupCboxv" %cboxv) :pointer
+  (children :pointer))
+
+(defun cbox (&rest children)
+  (with-ihandle-sequence (a children)
+    (%cboxv a)))
+
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupGridBox" iup-grid-box) :pointer
+;   (child :pointer)
+;   &rest)
+
+(defcfun ("IupGridBoxv" %grid-boxv) :pointer
+  (children :pointer))
+
+(defun grid-box (&rest children)
+  (with-ihandle-sequence (a children)
+    (%grid-boxv a)))
+
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupHbox" iup-hbox) :pointer
+;   (child :pointer)
+;   &rest)
+
+(defcfun ("IupHboxv" %hboxv) :pointer
+  (children :pointer))
+
+(defun hbox (&rest children)
+  (with-ihandle-sequence (a children)
+    (%hboxv a)))
+
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupVbox" %vbox) :pointer
+;   (child :pointer)
+;   &rest)
 
 (defcfun ("IupVboxv" %vboxv) :pointer
   (children :pointer))
 
 (defun vbox (&rest children)
-  (with-foreign-object (foreign-children :pointer (1+ (length children)))
-    (setf (mem-aref foreign-children :pointer (length children)) (null-pointer))
-    (loop
-      for c in children
-      for i = 0 then (1+ i)
-      do (setf (mem-aref foreign-children :pointer i) c))
-    (%vboxv foreign-children)))
+  (with-ihandle-sequence (a children)
+    (%vboxv a)))
 
-(defcfun ("IupZbox" iup-zbox) :pointer
-  (child :pointer)
-  &rest)
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupZbox" iup-zbox) :pointer
+;   (child :pointer)
+;   &rest)
 
-(defcfun ("IupZboxv" iup-zboxv) :pointer
+(defcfun ("IupZboxv" %zboxv) :pointer
   (children :pointer))
 
-(defcfun ("IupHbox" iup-hbox) :pointer
-  (child :pointer)
-  &rest)
-
-(defcfun ("IupHboxv" iup-hboxv) :pointer
-  (children :pointer))
+(defun zbox (&rest children)
+  (with-ihandle-sequence (a children)
+    (%zboxv a)))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupNormalizer" iup-normalizer) :pointer
-  (ih_first :pointer)
-  &rest)
+(defcfun ("IupRadio" radio) :pointer
+  (child :pointer))
 
-(defcfun ("IupNormalizerv" iup-normalizerv) :pointer
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupNormalizer" iup-normalizer) :pointer
+;   (ih_first :pointer)
+;   &rest)
+
+(defcfun ("IupNormalizerv" %normalizerv) :pointer
   (ih_list :pointer))
 
+(defun normalizer (&rest children)
+  (with-ihandle-sequence (a children)
+    (%normalizerv a)))
+
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupCbox" iup-cbox) :pointer
-  (child :pointer)
-  &rest)
-
-(defcfun ("IupCboxv" iup-cboxv) :pointer
-  (children :pointer))
-
-(defcfun ("IupSbox" iup-sbox) :pointer
+(defcfun ("IupFrame" frame) :pointer
   (child :pointer))
 
-(defcfun ("IupSplit" iup-split) :pointer
+(defcfun ("IupFlatFrame" flat-frame) :pointer
+  (child :pointer))
+
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupTabs" iup-tabs) :pointer
+;   (child :pointer)
+;   &rest)
+
+(defcfun ("IupTabsv" %tabsv) :pointer
+  (children :pointer))
+
+(defun tabs (&rest children)
+  (with-ihandle-sequence (a children)
+    (%tabsv a)))
+
+; Don't import variadic b.c. it is not needed
+; (defcfun ("IupFlatTabs" iup-flat-tabs) :pointer
+;   (child :pointer)
+;   &rest)
+
+(defcfun ("IupFlatTabsv" %flat-tabsv) :pointer
+  (children :pointer))
+
+(defun flat-tabs (&rest children)
+  (with-ihandle-sequence (a children)
+    (%flat-tabsv a)))
+
+(defcfun ("IupBackgroundBox" background-box) :pointer
+  (child :pointer))
+
+(defcfun ("IupScrollBox" scroll-box) :pointer
+  (child :pointer))
+
+(defcfun ("IupFlatScrollBox" flat-scroll-box) :pointer
+  (child :pointer))
+
+;;--------------------------------------------------------------------------------------
+
+(defcfun ("IupDetachBox" detach-box) :pointer
+  (child :pointer))
+
+(defcfun ("IupExpander" expander) :pointer
+  (child :pointer))
+
+(defcfun ("IupSbox" sbox) :pointer
+  (child :pointer))
+
+(defcfun ("IupSplit" split) :pointer
   (child1 :pointer)
   (child2 :pointer))
-
-(defcfun ("IupScrollBox" iup-scroll-box) :pointer
-  (child :pointer))
-
-(defcfun ("IupFlatScrollBox" iup-flat-scroll-box) :pointer
-  (child :pointer))
-
-(defcfun ("IupGridBox" iup-grid-box) :pointer
-  (child :pointer)
-  &rest)
-
-(defcfun ("IupGridBoxv" iup-grid-boxv) :pointer
-  (children :pointer))
-
-(defcfun ("IupExpander" iup-expander) :pointer
-  (child :pointer))
-
-(defcfun ("IupDetachBox" iup-detach-box) :pointer
-  (child :pointer))
-
-(defcfun ("IupBackgroundBox" iup-background-box) :pointer
-  (child :pointer))
-
-;;--------------------------------------------------------------------------------------
-
-(defcfun ("IupFrame" iup-frame) :pointer
-  (child :pointer))
-
-(defcfun ("IupFlatFrame" iup-flat-frame) :pointer
-  (child :pointer))
-
-(defcfun ("IupTabs" iup-tabs) :pointer
-  (child :pointer)
-  &rest)
-
-(defcfun ("IupTabsv" iup-tabsv) :pointer
-  (children :pointer))
-
-(defcfun ("IupFlatTabs" iup-flat-tabs) :pointer
-  (child :pointer)
-  &rest)
-
-(defcfun ("IupFlatTabsv" iup-flat-tabsv) :pointer
-  (children :pointer))
-
-;;--------------------------------------------------------------------------------------
-
-(defcfun ("IupGetClassName" iup-get-class-name) :string
-  (ih :pointer))
-
-(defcfun ("IupGetClassType" iup-get-class-type) :string
-  (ih :pointer))
-
-(defcfun ("IupGetAllClasses" iup-get-all-classes) :int
-  (names :pointer)
-  (n :int))
-
-(defcfun ("IupGetClassAttributes" iup-get-class-attributes) :int
-  (classname :string)
-  (names :pointer)
-  (n :int))
-
-(defcfun ("IupGetClassCallbacks" iup-get-class-callbacks) :int
-  (classname :string)
-  (names :pointer)
-  (n :int))
-
-(defcfun ("IupSaveClassAttributes" iup-save-class-attributes) :void
-  (ih :pointer))
-
-(defcfun ("IupCopyClassAttributes" iup-copy-class-attributes) :void
-  (src_ih :pointer)
-  (dst_ih :pointer))
-
-(defcfun ("IupSetClassDefaultAttribute" iup-set-class-default-attribute) :void
-  (classname :string)
-  (name :string)
-  (value :string))
-
-(defcfun ("IupClassMatch" iup-class-match) :int
-  (ih :pointer)
-  (classname :string))
-
 
