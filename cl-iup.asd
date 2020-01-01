@@ -13,7 +13,21 @@
       :components
         ((:file "packages")
          (:cffi-grovel-file "grovel")
-	       (:file "iup-cffi")
+         (:file "system")
+         (:file "attributes")
+         (:file "events")
+         (:file "dialogs")
+         (:file "layout-composition")
+         (:file "container-controls")
+         (:file "standard-controls")
+         (:file "control-management")
+         (:file "led")
+         (:file "images")
+         (:file "keyboard")
+         (:file "menus")
+         (:file "handle-names")
+         (:file "string-names")
+	       (:file "misc")
          (:file "iup")))))
 
 (asdf:defsystem #:cl-iup/examples
