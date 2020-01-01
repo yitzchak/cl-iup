@@ -2,7 +2,7 @@
 
 ;;=======================================================================
 (defpackage #:test-iup-2-t
-  (:use :cl :iup :iup/cffi :iterate)
+  (:use :cl :iup :iup :iterate)
   (:export :tmpl-1))
 (in-package #:test-iup-2-t)
 
@@ -12,7 +12,7 @@
   (*btn-* = "button" :title "-" :expand :no :rastersize "25x25"))
 ;;=======================================================================
 (defpackage #:test-iup-2
-  (:use :cl :iup :iup/cffi :iterate)
+  (:use :cl :iup :iup :iterate)
   (:export :main-test))
 (in-package #:test-iup-2)
 ;;-----------------------------------------------------------------------       

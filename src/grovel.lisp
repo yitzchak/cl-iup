@@ -1,4 +1,4 @@
-(in-package #:iup/cffi)
+(in-package #:iup)
 
 (include "iup/iup.h")
 

@@ -1,6 +1,6 @@
 ;;;; package.lisp
 
-(defpackage #:iup/cffi
+(defpackage #:iup
   (:use #:cl #:cffi #:iterate)
   (:export
    ;;=============================================
@@ -9,246 +9,233 @@
    ;;---------------------------------------------
    ;; Main API
    ;;---------------------------------------------
-   :IupOpen
-   :IupClose
-   :IupImageLibOpen
+   #:start
+   #:stop
+   #:IupImageLibOpen
 
-   :IupMainLoop
-   :IupLoopStep
-   :IupLoopStepWait
-   :IupMainLoopLevel
-   :IupFlush
-   :IupExitLoop
+   #:main-loop
+   #:IupLoopStep
+   #:IupLoopStepWait
+   #:IupMainLoopLevel
+   #:IupFlush
+   #:IupExitLoop
 
-   :IupRecordInput
-   :IupPlayInput
+   #:IupRecordInput
+   #:IupPlayInput
 
-   :IupUpdate
-   :IupUpdateChildren
-   :IupRedraw
-   :IupRefresh
-   :IupRefreshChildren
+   #:IupUpdate
+   #:IupUpdateChildren
+   #:IupRedraw
+   #:IupRefresh
+   #:IupRefreshChildren
 
-   :IupMapFont
-   :IupUnMapFont
-   :IupHelp
-   :IupLoad
-   :IupLoadBuffer
+   #:IupMapFont
+   #:IupUnMapFont
+   #:IupHelp
+   #:IupLoad
+   #:IupLoadBuffer
 
-   :IupVersion
-   :IupVersionDate
-   :IupVersionNumber
-   :IupSetLanguage
-   :IupGetLanguage
+   #:version
+   #:version-date
+   #:version-number
 
-   :IupDestroy
-   :IupDetach
-   :IupAppend
-   :IupInsert
-   :IupGetChild
-   :IupGetChildPos
-   :IupGetChildCount
-   :IupGetNextChild
-   :IupGetBrother
-   :IupGetParent
-   :IupGetDialog
-   :IupGetDialogChild
-   :IupReparent
+   #:IupSetLanguage
+   #:IupGetLanguage
 
-   :IupPopup
-   :IupShow
-   :IupShowXY
-   :IupHide
-   :IupMap
-   :IupUnmap
+   #:IupDestroy
+   #:IupDetach
+   #:IupAppend
+   #:IupInsert
+   #:IupGetChild
+   #:IupGetChildPos
+   #:IupGetChildCount
+   #:IupGetNextChild
+   #:IupGetBrother
+   #:IupGetParent
+   #:IupGetDialog
+   #:IupGetDialogChild
+   #:IupReparent
 
-   :IupSetAttribute
-   :IupStoreAttribute
-   :IupSetAttributes
-   :IupGetAttribute
-   :IupGetAttributes
-   :IupGetInt
-   :IupGetInt2
-   :IupGetIntInt
-   :IupGetFloat
-   :IupSetfAttribute
-   :IupResetAttribute
-   :IupGetAllAttributes
-   :IupSetAtt
+   #:IupPopup
+   #:show
+   #:show-xy
+   #:IupHide
+   #:IupMap
+   #:IupUnmap
 
-   :IupSetAttributeId
-   :IupStoreAttributeId
-   :IupGetAttributeId
-   :IupGetFloatId
-   :IupGetIntId
-   :IupSetfAttributeId
+   #:set-attribute
+   #:IupStoreAttribute
+   #:IupSetAttributes
+   #:IupGetAttribute
+   #:IupGetAttributes
+   #:IupGetInt
+   #:IupGetInt2
+   #:IupGetIntInt
+   #:IupGetFloat
+   #:IupSetfAttribute
+   #:IupResetAttribute
+   #:IupGetAllAttributes
+   #:IupSetAtt
 
-   :IupSetAttributeId2
-   :IupStoreAttributeId2
-   :IupGetAttributeId2
-   :IupGetIntId2
-   :IupGetFloatId2
-   :IupSetfAttributeId2
+   #:IupSetAttributeId
+   #:IupStoreAttributeId
+   #:IupGetAttributeId
+   #:IupGetFloatId
+   #:IupGetIntId
+   #:IupSetfAttributeId
 
-   :IupSetGlobal
-   :IupStoreGlobal
-   :IupGetGlobal
+   #:IupSetAttributeId2
+   #:IupStoreAttributeId2
+   #:IupGetAttributeId2
+   #:IupGetIntId2
+   #:IupGetFloatId2
+   #:IupSetfAttributeId2
 
-   :IupSetFocus
-   :IupGetFocus
-   :IupPreviousField
-   :IupNextField
+   #:IupSetGlobal
+   #:IupStoreGlobal
+   #:IupGetGlobal
 
-   :IupGetCallback
-   :IupSetCallback
-   :IupSetCallbacks
+   #:IupSetFocus
+   #:IupGetFocus
+   #:IupPreviousField
+   #:IupNextField
 
-   :IupGetFunction
-   :IupSetFunction
-   :IupGetActionName
+   #:IupGetCallback
+   #:IupSetCallback
+   #:IupSetCallbacks
 
-   :IupGetHandle
-   :IupSetHandle
-   :IupGetAllNames
-   :IupGetAllDialogs
-   :IupGetName
+   #:IupGetFunction
+   #:IupSetFunction
+   #:IupGetActionName
 
-   :IupSetAttributeHandle
-   :IupGetAttributeHandle
+   #:IupGetHandle
+   #:IupSetHandle
+   #:IupGetAllNames
+   #:IupGetAllDialogs
+   #:IupGetName
 
-   :IupGetClassName
-   :IupGetClassType
-   :IupGetAllClasses
-   :IupGetClassAttributes
-   :IupGetClassCallbacks
-   :IupSaveClassAttributes
-   :IupCopyClassAttributes
-   :IupSetClassDefaultAttribute
-   :IupClassMatch
+   #:IupSetAttributeHandle
+   #:IupGetAttributeHandle
 
-   :IupCreate
-   :IupCreatev
-   :IupCreatep
+   #:IupGetClassName
+   #:IupGetClassType
+   #:IupGetAllClasses
+   #:IupGetClassAttributes
+   #:IupGetClassCallbacks
+   #:IupSaveClassAttributes
+   #:IupCopyClassAttributes
+   #:IupSetClassDefaultAttribute
+   #:IupClassMatch
+
+   #:IupCreate
+   #:IupCreatev
+   #:IupCreatep
 
    ;;---------------------------------------------
    ;; Elements
    ;;---------------------------------------------
-   :IupFill
-   :IupRadio
-   :IupVbox
-   :IupVboxv
-   :IupZbox
-   :IupZboxv
-   :IupHbox
-   :IupHboxv
+   #:IupFill
+   #:IupRadio
+   #:vbox
+   ;#:IupVboxv
+   #:IupZbox
+   #:IupZboxv
+   #:IupHbox
+   #:IupHboxv
 
-   :IupNormalizer
-   :IupNormalizerv
+   #:IupNormalizer
+   #:IupNormalizerv
 
-   :IupCbox
-   :IupCboxv
-   :IupSbox
-   :IupSplit
-   :IupScrollBox
-   :IupGridBox
-   :IupGridBoxv
-   :IupExpander
+   #:IupCbox
+   #:IupCboxv
+   #:IupSbox
+   #:IupSplit
+   #:IupScrollBox
+   #:IupGridBox
+   #:IupGridBoxv
+   #:IupExpander
 
-   :IupFrame
+   #:IupFrame
 
-   :IupImage
-   :IupImageRGB
-   :IupImageRGBA
+   #:IupImage
+   #:IupImageRGB
+   #:IupImageRGBA
 
-   :IupItem
-   :IupSubmenu
-   :IupSeparator
-   :IupMenu
-   :IupMenuv
+   #:IupItem
+   #:IupSubmenu
+   #:IupSeparator
+   #:IupMenu
+   #:IupMenuv
 
-   :IupButton
-   :IupCanvas
-   :IupDialog
-   :IupUser
-   :IupLabel
-   :IupList
-   :IupText
-   :IupMultiLine
-   :IupToggle
-   :IupTimer
-   :IupClipboard
-   :IupProgressBar
-   :IupVal
-   :IupTabs
-   :IupTabsv
-   :IupTree
-   :IupLink
-   ;; Deprecated controls, use SPIN attribute of IupText
-   :IupSpin
-   :IupSpinbox
+   #:IupButton
+   #:IupCanvas
+   #:dialog
+   #:IupUser
+   #:label
+   #:IupList
+   #:IupText
+   #:IupMultiLine
+   #:IupToggle
+   #:IupTimer
+   #:IupClipboard
+   #:IupProgressBar
+   #:IupVal
+   #:IupTabs
+   #:IupTabsv
+   #:IupTree
+   #:IupLink
    ;; IupImage utility
-   :IupSaveImageAsText
+   #:IupSaveImageAsText
    ;; IupText and IupScintilla utilities
-   :IupTextConvertLinColToPos
-   :IupTextConvertPosToLinCol
+   #:IupTextConvertLinColToPos
+   #:IupTextConvertPosToLinCol
    ;; IupText, IupList, IupTree, IupMatrix and IupScintilla utility
-   :IupConvertXYToPos
+   #:IupConvertXYToPos
    ;; IupTree utilities
-   :IupTreeSetUserId
-   :IupTreeGetUserId
-   :IupTreeGetId
-   ;; Deprecated IupTree utilities, use Iup*AttributeId functions
-   :IupTreeSetAttribute
-   :IupTreeStoreAttribute
-   :IupTreeGetAttribute
-   :IupTreeGetInt
-   :IupTreeGetFloat
-   :IupTreeSetfAttribute
-   :IupTreeSetAttributeHandle
+   #:IupTreeSetUserId
+   #:IupTreeGetUserId
+   #:IupTreeGetId
 
    ;;---------------------------------------------
    ;; Pre-definided dialogs
    ;;---------------------------------------------
-   :IupFileDlg
-   :IupMessageDlg
-   :IupColorDlg
-   :IupFontDlg
+   #:IupFileDlg
+   #:IupMessageDlg
+   #:IupColorDlg
+   #:IupFontDlg
 
-   :IupGetFile
-   :IupMessage
-   :IupMessagef
-   :IupAlarm
-   :IupScanf
-   :IupListDialog
-   :IupGetText
-   :IupGetColor
+   #:IupGetFile
+   #:message
+   #:IupMessagef
+   #:IupAlarm
+   #:IupScanf
+   #:IupListDialog
+   #:IupGetText
+   #:IupGetColor
 
-   :IupGetParam
-   :IupGetParamv
+   #:IupGetParam
+   #:IupGetParamv
 
-   :IupLayoutDialog
-   :IupElementPropertiesDialog))
+   #:IupLayoutDialog
+   #:IupElementPropertiesDialog
 
-(defpackage #:iup
-  (:use #:cl #:cffi #:iterate)
-  (:export
-   :iup-open
-   :with-iup
-   :iup-defcallback
-   :iup-defcallback-default
+    #:iup-open
+    #:with-iup
+    #:iup-defcallback
+    #:iup-defcallback-default
 
-   :iup-register-event
-   :iup-defevent
-   :iup-defevent-default
-   :iup-set-all-events
+    #:iup-register-event
+    #:iup-defevent
+    #:iup-defevent-default
+    #:iup-set-all-events
 
-   :iup-lambda-callback
-   :iup-hbox
-   :iup-vbox
-   :iup-grid-box
-   :iup-tabs
-   :iup-attribute
-   :iup-set-attributes
+    #:iup-lambda-callback
+    #:iup-hbox
+    #:iup-vbox
+    #:iup-grid-box
+    #:iup-tabs
+    #:iup-attribute
+    #:iup-set-attributes
 
-   :iup-defgui
-   :iup-defgui-template))   
+    #:iup-defgui
+    #:iup-defgui-template))   

@@ -6,7 +6,7 @@
 
 (defun iup-open ()
   #+sbcl (sb-ext::set-floating-point-modes :traps nil)
-  (iup/cffi:IupOpen
+  (%start
    (cffi:foreign-alloc :int :initial-element 0)
    (cffi:foreign-alloc
     :pointer
@@ -20,7 +20,7 @@
 	(progn
 	  (iup-open)
 	  ,@body)
-     (iup/cffi:IupClose)))
+     (stop)))
 ;;--------------------------------------------------------------------------------------
 (defun get-fn-args (cb-args)
   (mapcar #'first cb-args))
@@ -79,7 +79,7 @@
 ;;--------------------------------------------------------------------------------------
 (defmacro iup-set-all-events ()
   '(mapcar #'(lambda (x)
-	      (iup/cffi:IupSetCallback (symbol-value (first x))
+	      (iup:IupSetCallback (symbol-value (first x))
 	       		      (second x)
 	       		      (cffi:get-callback (print (third x)))))
 	  *%iup-event-connections*))
@@ -91,17 +91,20 @@
 	     (mapcan #'(lambda (x)
 			 (list :pointer x)) childs) '(:int 0))))
 
-(%def-iup-container-macro iup/cffi:IupVbox iup-vbox)
-(%def-iup-container-macro iup/cffi:IupHbox iup-hbox)
-(%def-iup-container-macro iup/cffi:IupTabs iup-tabs)
-(%def-iup-container-macro iup/cffi:IupGridBox iup-grid-box)
+;(%def-iup-container-macro iup:IupVbox iup-vbox)
+(%def-iup-container-macro iup:IupHbox iup-hbox)
+(%def-iup-container-macro iup:IupTabs iup-tabs)
+(%def-iup-container-macro iup:IupGridBox iup-grid-box)
 ;;--------------------------------------------------------------------------------------
 ;;--------------------------------------------------------------------------------------
 (defun iup-attribute (ih &optional (attr-name "VALUE"))
-  (iup/cffi:IupGetAttribute ih attr-name))
+  (iup:IupGetAttribute ih attr-name))
 
 (defun (setf iup-attribute) (val ih &optional (attr-name "VALUE"))
-  (iup/cffi:IupStoreAttribute ih (format nil "~A" attr-name) (format nil "~A" val)))
+  (set-attribute ih (format nil "~A" attr-name) (format nil "~A" val)))
+
+(defmethod (setf attribute) (val ih &optional (attr-name :value))
+  (set-attribute ih (format nil "~:(~A~)" attr-name) (format nil "~A" val)))
 ;;--------------------------------------------------------------------------------------
 (defun iup-set-attributes (ih &rest attributes)
   (iter (for (a v) on attributes by #'cddr)
@@ -151,13 +154,13 @@
 			     ((and (symbolp clss)
 				   (string= "APPLY-TEMPLATE" (string clss)))
 			      (error "There is no Templates :("))
-			     (T `(iup/cffi:IupCreate ,clss)))))
-	       (when parent (list `(iup/cffi:IupAppend ,parent ,name)))))
+			     (T `(iup:IupCreate ,clss)))))
+	       (when parent (list `(iup:IupAppend ,parent ,name)))))
 	(iter (for ch in chlds)
 	      (cond
 		((symbolp ch)
 		 (if (member ch args)
-		     (setf sets (append sets (list `(iup/cffi:IupAppend ,name ,ch))))
+		     (setf sets (append sets (list `(iup:IupAppend ,name ,ch))))
 		     (error "Undefined symbol: ~A" ch)))
 		(T (multiple-value-bind (l s) (%iup-defgui-defun-lets/sets ch args name)
 		     (when l (setf lets (append lets l)))
@@ -244,7 +247,7 @@
 
 ;; (defun iup-set-all-events (obj)
 ;;   (mapcar #'(lambda (x)
-;; 	      (iup/cffi:IupSetCallback (%recur-accessor (reverse (first x)) obj)
+;; 	      (iup:IupSetCallback (%recur-accessor (reverse (first x)) obj)
 ;; 	       		      (second x)
 ;; 	       		      (cffi:get-callback
 ;; 			       (eval `(cffi:defcallback
@@ -277,8 +280,8 @@
 ;; 			     ((and (symbolp clss)
 ;; 				   (string= "APPLY-TEMPLATE" (string clss)))
 ;; 			      (error "There is no Templates :("))
-;; 			     (T `(iup/cffi:IupCreate ,clss)))))
-;; 	       (when parent (list `(iup/cffi:IupAppend ,parent ,name)))))
+;; 			     (T `(iup:IupCreate ,clss)))))
+;; 	       (when parent (list `(iup:IupAppend ,parent ,name)))))
 ;; 	(iter (for ch in chlds)
 ;; 	      (multiple-value-bind (l s) (%iup-defgui-defun-lets/sets c-name ch name)
 ;; 		(when l (setf lets (append lets l)))
