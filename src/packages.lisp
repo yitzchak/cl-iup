@@ -133,8 +133,8 @@
    #:iup-createp
 
    ;;Container Controls
-   #:iup-fill
-   #:iup-space
+   #:filler
+   #:spacer
 
    #:cbox
    #:grid-box

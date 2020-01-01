@@ -1,8 +1,8 @@
 (in-package #:iup)
 
-(defcfun ("IupFill" iup-fill) :pointer)
+(defcfun ("IupFill" filler) :pointer)
 
-(defcfun ("IupSpace" iup-space) :pointer)
+(defcfun ("IupSpace" spacer) :pointer)
 
 ;;--------------------------------------------------------------------------------------
 
