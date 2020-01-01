@@ -25,47 +25,47 @@
 
 (defcfun ("IupClose" stop) :void)
 
-(defcfun ("IupImageLibOpen" IupImageLibOpen) :void)
+(defcfun ("IupImageLibOpen" image-lib-open) :void)
 
 ;;--------------------------------------------------------------------------------------
 
 (defcfun ("IupMainLoop" main-loop) :iup-status)
 
-(defcfun ("IupLoopStep" IupLoopStep) :iup-action)
+(defcfun ("IupLoopStep" loop-step) :iup-action)
 
-(defcfun ("IupLoopStepWait" IupLoopStepWait) :iup-action)
+(defcfun ("IupLoopStepWait" loop-step-wait) :iup-action)
 
-(defcfun ("IupMainLoopLevel" IupMainLoopLevel) :int)
+(defcfun ("IupMainLoopLevel" main-loop-level) :int)
 
-(defcfun ("IupFlush" IupFlush) :void)
+(defcfun ("IupFlush" flush) :void)
 
-(defcfun ("IupExitLoop" IupExitLoop) :void)
+(defcfun ("IupExitLoop" exit-loop) :void)
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupRecordInput" IupRecordInput) :iup-status
+(defcfun ("IupRecordInput" record-input) :iup-status
   (filename :string)
   (mode :iup-record-mode))
 
-(defcfun ("IupPlayInput" IupPlayInput) :iup-status
+(defcfun ("IupPlayInput" play-input) :iup-status
   (filename :string))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupUpdate" IupUpdate) :void
+(defcfun ("IupUpdate" iup-update) :void
   (ih :pointer))
 
-(defcfun ("IupUpdateChildren" IupUpdateChildren) :void
+(defcfun ("IupUpdateChildren" iup-update-children) :void
   (ih :pointer))
 
-(defcfun ("IupRedraw" IupRedraw) :void
+(defcfun ("IupRedraw" iup-redraw) :void
   (ih :pointer)
   (children :int))
 
-(defcfun ("IupRefresh" IupRefresh) :void
+(defcfun ("IupRefresh" iup-refresh) :void
   (ih :pointer))
 
-(defcfun ("IupRefreshChildren" IupRefreshChildren) :void
+(defcfun ("IupRefreshChildren" iup-refresh-children) :void
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
@@ -79,17 +79,17 @@
 ; int       IupExecute(const char *filename, const char* parameters);
 ; int       IupExecuteWait(const char *filename, const char* parameters);
 
-(defcfun ("IupHelp" IupHelp) :int
+(defcfun ("IupHelp" iup-help) :int
   (url :string))
 
 ; void      IupLog(const char* type, const char* format, ...);
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupLoad" IupLoad) :string
+(defcfun ("IupLoad" iup-load) :string
   (filename :string))
 
-(defcfun ("IupLoadBuffer" IupLoadBuffer) :string
+(defcfun ("IupLoadBuffer" iup-load-buffer) :string
   (buffer :string))
 
 ;;--------------------------------------------------------------------------------------
@@ -102,10 +102,10 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetLanguage" IupSetLanguage) :void
+(defcfun ("IupSetLanguage" iup-set-language) :void
   (lng :string))
 
-(defcfun ("IupGetLanguage" IupGetLanguage) :string)
+(defcfun ("IupGetLanguage" iup-get-language) :string)
 
 ; void      IupSetLanguageString(const char* name, const char* str);
 ; void      IupStoreLanguageString(const char* name, const char* str);
@@ -114,57 +114,57 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupDestroy" IupDestroy) :void
+(defcfun ("IupDestroy" iup-destroy) :void
   (ih :pointer))
 
-(defcfun ("IupDetach" IupDetach) :void
+(defcfun ("IupDetach" iup-detach) :void
   (child :pointer))
 
-(defcfun ("IupAppend" IupAppend) :pointer
+(defcfun ("IupAppend" iup-append) :pointer
   (ih :pointer)
   (child :pointer))
 
-(defcfun ("IupInsert" IupInsert) :pointer
+(defcfun ("IupInsert" iup-insert) :pointer
   (ih :pointer)
   (ref_child :pointer)
   (child :pointer))
 
-(defcfun ("IupGetChild" IupGetChild) :pointer
+(defcfun ("IupGetChild" iup-get-child) :pointer
   (ih :pointer)
   (pos :int))
 
-(defcfun ("IupGetChildPos" IupGetChildPos) :int
+(defcfun ("IupGetChildPos" iup-get-child-pos) :int
   (ih :pointer)
   (child :pointer))
 
-(defcfun ("IupGetChildCount" IupGetChildCount) :int
+(defcfun ("IupGetChildCount" iup-get-child-count) :int
   (ih :pointer))
 
-(defcfun ("IupGetNextChild" IupGetNextChild) :pointer
+(defcfun ("IupGetNextChild" iup-get-next-child) :pointer
   (ih :pointer)
   (child :pointer))
 
-(defcfun ("IupGetBrother" IupGetBrother) :pointer
+(defcfun ("IupGetBrother" iup-get-brother) :pointer
   (ih :pointer))
 
-(defcfun ("IupGetParent" IupGetParent) :pointer
+(defcfun ("IupGetParent" iup-get-parent) :pointer
   (ih :pointer))
 
-(defcfun ("IupGetDialog" IupGetDialog) :pointer
+(defcfun ("IupGetDialog" iup-get-dialog) :pointer
   (ih :pointer))
 
-(defcfun ("IupGetDialogChild" IupGetDialogChild) :pointer
+(defcfun ("IupGetDialogChild" iup-get-dialog-child) :pointer
   (ih :pointer)
   (name :string))
 
-(defcfun ("IupReparent" IupReparent) :iup-status
+(defcfun ("IupReparent" iup-reparent) :iup-status
   (ih :pointer)
   (new_parent :pointer)
   (ref_child :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupPopup" IupPopup) :iup-status
+(defcfun ("IupPopup" iup-popup) :iup-status
   (ih :pointer)
   (x :iup-position)
   (y :iup-position))
@@ -177,39 +177,39 @@
   (x :iup-position)
   (y :iup-position))
 
-(defcfun ("IupHide" IupHide) :iup-status
+(defcfun ("IupHide" iup-hide) :iup-status
   (ih :pointer))
 
-(defcfun ("IupMap" IupMap) :iup-status
+(defcfun ("IupMap" iup-map) :iup-status
   (ih :pointer))
 
-(defcfun ("IupUnmap" IupUnmap) :void
+(defcfun ("IupUnmap" iup-unmap) :void
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupResetAttribute" IupResetAttribute) :void
+(defcfun ("IupResetAttribute" iup-reset-attribute) :void
   (ih :pointer)
   (name :string))
 
-(defcfun ("IupGetAllAttributes" IupGetAllAttributes) :int
+(defcfun ("IupGetAllAttributes" iup-get-all-attributes) :int
   (ih :pointer)
   (names :pointer)
   (n :int))
 
 ; void      IupCopyAttributes(Ihandle* src_ih, Ihandle* dst_ih);
 
-(defcfun ("IupSetAtt" IupSetAtt) :pointer
+(defcfun ("IupSetAtt" iup-set-att) :pointer
   (handle_name :string)
   (ih :pointer)
   (name :string)
   &rest)
 
-(defcfun ("IupSetAttributes" IupSetAttributes) :pointer
+(defcfun ("IupSetAttributes" iup-set-attributes) :pointer
   (ih :pointer)
   (str :string))
 
-(defcfun ("IupGetAttributes" IupGetAttributes) :string
+(defcfun ("IupGetAttributes" iup-get-attributes) :string
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
@@ -228,25 +228,25 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetAttribute" IupGetAttribute) :string
+(defcfun ("IupGetAttribute" iup-get-attribute) :string
   (ih :pointer)
   (name :string))
 
-(defcfun ("IupGetInt" IupGetInt) :int
+(defcfun ("IupGetInt" iup-get-int) :int
   (ih :pointer)
   (name :string))
 
-(defcfun ("IupGetInt2" IupGetInt2) :int
+(defcfun ("IupGetInt2" iup-get-int2) :int
   (ih :pointer)
   (name :string))
 
-(defcfun ("IupGetIntInt" IupGetIntInt) :int
+(defcfun ("IupGetIntInt" iup-get-int-int) :int
   (ih :pointer)
   (name :string)
   (i1 (:pointer :int))
   (i2 (:pointer :int)))
 
-(defcfun ("IupGetFloat" IupGetFloat) :float
+(defcfun ("IupGetFloat" iup-get-float) :float
   (ih :pointer)
   (name :string))
 
@@ -255,7 +255,7 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttributeId" IupSetAttributeId) :void
+(defcfun ("IupSetAttributeId" iup-set-attribute-id) :void
   (ih :pointer)
   (name :string)
   (id :int)
@@ -270,17 +270,17 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetAttributeId" IupGetAttributeId) :string
+(defcfun ("IupGetAttributeId" iup-get-attribute-id) :string
   (ih :pointer)
   (name :string)
   (id :int))
 
-(defcfun ("IupGetIntId" IupGetIntId) :int
+(defcfun ("IupGetIntId" iup-get-int-id) :int
   (ih :pointer)
   (name :string)
   (id :int))
 
-(defcfun ("IupGetFloatId" IupGetFloatId) :float
+(defcfun ("IupGetFloatId" iup-get-float-id) :float
   (ih :pointer)
   (name :string)
   (id :int))
@@ -290,7 +290,7 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttributeId2" IupSetAttributeId2) :void
+(defcfun ("IupSetAttributeId2" iup-set-attribute-id2) :void
   (ih :pointer)
   (name :string)
   (lin :int)
@@ -306,19 +306,19 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetAttributeId2" IupGetAttributeId2) :string
+(defcfun ("IupGetAttributeId2" iup-get-attribute-id2) :string
   (ih :pointer)
   (name :string)
   (lin :int)
   (col :int))
 
-(defcfun ("IupGetIntId2" IupGetIntId2) :int
+(defcfun ("IupGetIntId2" iup-get-int-id2) :int
   (ih :pointer)
   (name :string)
   (lin :int)
   (col :int))
 
-(defcfun ("IupGetFloatId2" IupGetFloatId2) :float
+(defcfun ("IupGetFloatId2" iup-get-float-id2) :float
   (ih :pointer)
   (name :string)
   (lin :int)
@@ -329,42 +329,42 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetGlobal" IupSetGlobal) :void
+(defcfun ("IupSetGlobal" iup-set-global) :void
   (name :string)
   (value :string))
 
-(defcfun ("IupStoreGlobal" IupStoreGlobal) :void
+(defcfun ("IupStoreGlobal" iup-store-global) :void
   (name :string)
   (value :string))
 
-(defcfun ("IupGetGlobal" IupGetGlobal) :string
+(defcfun ("IupGetGlobal" iup-get-global) :string
   (name :string))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetFocus" IupSetFocus) :pointer
+(defcfun ("IupSetFocus" iup-set-focus) :pointer
   (ih :pointer))
 
-(defcfun ("IupGetFocus" IupGetFocus) :pointer)
+(defcfun ("IupGetFocus" iup-get-focus) :pointer)
 
-(defcfun ("IupPreviousField" IupPreviousField) :pointer
+(defcfun ("IupPreviousField" iup-previous-field) :pointer
   (ih :pointer))
 
-(defcfun ("IupNextField" IupNextField) :pointer
+(defcfun ("IupNextField" iup-next-field) :pointer
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetCallback" IupGetCallback) :pointer
+(defcfun ("IupGetCallback" iup-get-callback) :pointer
   (ih :pointer)
   (name :string))
 
-(defcfun ("IupSetCallback" IupSetCallback) :pointer
+(defcfun ("IupSetCallback" set-callback) :pointer
   (ih :pointer)
   (name :string)
   (func :pointer))
 
-(defcfun ("IupSetCallbacks" IupSetCallbacks) :pointer
+(defcfun ("IupSetCallbacks" iup-set-callbacks) :pointer
   (ih :pointer)
   (name :string)
   (func :pointer)
@@ -372,41 +372,41 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetFunction" IupGetFunction) :pointer
+(defcfun ("IupGetFunction" iup-get-function) :pointer
   (name :string))
 
-(defcfun ("IupSetFunction" IupSetFunction) :pointer
+(defcfun ("IupSetFunction" iup-set-function) :pointer
   (name :string)
   (func :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetHandle" IupGetHandle) :pointer
+(defcfun ("IupGetHandle" iup-get-handle) :pointer
   (name :string))
 
-(defcfun ("IupSetHandle" IupSetHandle) :pointer
+(defcfun ("IupSetHandle" iup-set-handle) :pointer
   (name :string)
   (ih :pointer))
 
-(defcfun ("IupGetAllNames" IupGetAllNames) :int
+(defcfun ("IupGetAllNames" iup-get-all-names) :int
   (names :pointer)
   (n :int))
 
-(defcfun ("IupGetAllDialogs" IupGetAllDialogs) :int
+(defcfun ("IupGetAllDialogs" iup-get-all-dialogs) :int
   (names :pointer)
   (n :int))
 
-(defcfun ("IupGetName" IupGetName) :string
+(defcfun ("IupGetName" iup-get-name) :string
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttributeHandle" IupSetAttributeHandle) :void
+(defcfun ("IupSetAttributeHandle" iup-set-attribute-handle) :void
   (ih :pointer)
   (name :string)
   (ih_named :pointer))
 
-(defcfun ("IupGetAttributeHandle" IupGetAttributeHandle) :pointer
+(defcfun ("IupGetAttributeHandle" iup-get-attribute-handle) :pointer
   (ih :pointer)
   (name :string))
 
@@ -417,52 +417,52 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetClassName" IupGetClassName) :string
+(defcfun ("IupGetClassName" iup-get-class-name) :string
   (ih :pointer))
 
-(defcfun ("IupGetClassType" IupGetClassType) :string
+(defcfun ("IupGetClassType" iup-get-class-type) :string
   (ih :pointer))
 
-(defcfun ("IupGetAllClasses" IupGetAllClasses) :int
+(defcfun ("IupGetAllClasses" iup-get-all-classes) :int
   (names :pointer)
   (n :int))
 
-(defcfun ("IupGetClassAttributes" IupGetClassAttributes) :int
+(defcfun ("IupGetClassAttributes" iup-get-class-attributes) :int
   (classname :string)
   (names :pointer)
   (n :int))
 
-(defcfun ("IupGetClassCallbacks" IupGetClassCallbacks) :int
+(defcfun ("IupGetClassCallbacks" iup-get-class-callbacks) :int
   (classname :string)
   (names :pointer)
   (n :int))
 
-(defcfun ("IupSaveClassAttributes" IupSaveClassAttributes) :void
+(defcfun ("IupSaveClassAttributes" iup-save-class-attributes) :void
   (ih :pointer))
 
-(defcfun ("IupCopyClassAttributes" IupCopyClassAttributes) :void
+(defcfun ("IupCopyClassAttributes" iup-copy-class-attributes) :void
   (src_ih :pointer)
   (dst_ih :pointer))
 
-(defcfun ("IupSetClassDefaultAttribute" IupSetClassDefaultAttribute) :void
+(defcfun ("IupSetClassDefaultAttribute" iup-set-class-default-attribute) :void
   (classname :string)
   (name :string)
   (value :string))
 
-(defcfun ("IupClassMatch" IupClassMatch) :int
+(defcfun ("IupClassMatch" iup-class-match) :int
   (ih :pointer)
   (classname :string))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupCreate" IupCreate) :pointer
+(defcfun ("IupCreate" iup-create) :pointer
   (classname :string))
 
-(defcfun ("IupCreatev" IupCreatev) :pointer
+(defcfun ("IupCreatev" iup-createv) :pointer
   (classname :string)
   (params :pointer))
 
-(defcfun ("IupCreatep" IupCreatep) :pointer
+(defcfun ("IupCreatep" iup-createp) :pointer
   (classname :string)
   (first :pointer)
   &rest)
@@ -473,13 +473,13 @@
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupFill" IupFill) :pointer)
+(defcfun ("IupFill" iup-fill) :pointer)
 
-(defcfun ("IupSpace" IupSpace) :pointer)
+(defcfun ("IupSpace" iup-space) :pointer)
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupRadio" IupRadio) :pointer
+(defcfun ("IupRadio" iup-radio) :pointer
   (child :pointer))
 
 (defcfun ("IupVbox" %vbox) :pointer
@@ -498,181 +498,184 @@
       do (setf (mem-aref foreign-children :pointer i) c))
     (%vboxv foreign-children)))
 
-(defcfun ("IupZbox" IupZbox) :pointer
+(defcfun ("IupZbox" iup-zbox) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupZboxv" IupZboxv) :pointer
+(defcfun ("IupZboxv" iup-zboxv) :pointer
   (children :pointer))
 
-(defcfun ("IupHbox" IupHbox) :pointer
+(defcfun ("IupHbox" iup-hbox) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupHboxv" IupHboxv) :pointer
+(defcfun ("IupHboxv" iup-hboxv) :pointer
   (children :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupNormalizer" IupNormalizer) :pointer
+(defcfun ("IupNormalizer" iup-normalizer) :pointer
   (ih_first :pointer)
   &rest)
 
-(defcfun ("IupNormalizerv" IupNormalizerv) :pointer
+(defcfun ("IupNormalizerv" iup-normalizerv) :pointer
   (ih_list :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupCbox" IupCbox) :pointer
+(defcfun ("IupCbox" iup-cbox) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupCboxv" IupCboxv) :pointer
+(defcfun ("IupCboxv" iup-cboxv) :pointer
   (children :pointer))
 
-(defcfun ("IupSbox" IupSbox) :pointer
+(defcfun ("IupSbox" iup-sbox) :pointer
   (child :pointer))
 
-(defcfun ("IupSplit" IupSplit) :pointer
+(defcfun ("IupSplit" iup-split) :pointer
   (child1 :pointer)
   (child2 :pointer))
 
-(defcfun ("IupScrollBox" IupScrollBox) :pointer
+(defcfun ("IupScrollBox" iup-scroll-box) :pointer
   (child :pointer))
 
-(defcfun ("IupFlatScrollBox" IupFlatScrollBox) :pointer
+(defcfun ("IupFlatScrollBox" iup-flat-scroll-box) :pointer
   (child :pointer))
 
-(defcfun ("IupGridBox" IupGridBox) :pointer
+(defcfun ("IupGridBox" iup-grid-box) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupGridBoxv" IupGridBoxv) :pointer
+(defcfun ("IupGridBoxv" iup-grid-boxv) :pointer
   (children :pointer))
 
-(defcfun ("IupExpander" IupExpander) :pointer
+(defcfun ("IupExpander" iup-expander) :pointer
   (child :pointer))
 
-(defcfun ("IupDetachBox" IupDetachBox) :pointer
+(defcfun ("IupDetachBox" iup-detach-box) :pointer
   (child :pointer))
 
-(defcfun ("IupBackgroundBox" IupBackgroundBox) :pointer
-  (child :pointer))
-
-;;--------------------------------------------------------------------------------------
-
-(defcfun ("IupFrame" IupFrame) :pointer
-  (child :pointer))
-
-(defcfun ("IupFlatFrame" IupFlatFrame) :pointer
+(defcfun ("IupBackgroundBox" iup-background-box) :pointer
   (child :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupImage" IupImage) :pointer
+(defcfun ("IupFrame" iup-frame) :pointer
+  (child :pointer))
+
+(defcfun ("IupFlatFrame" iup-flat-frame) :pointer
+  (child :pointer))
+
+;;--------------------------------------------------------------------------------------
+
+(defcfun ("IupImage" iup-image) :pointer
   (width :int)
   (height :int)
   (pixmap :pointer))
 
-(defcfun ("IupImageRGB" IupImageRGB) :pointer
+(defcfun ("IupImageRGB" iup-image-rgb) :pointer
   (width :int)
   (height :int)
   (pixmap :pointer))
 
-(defcfun ("IupImageRGBA" IupImageRGBA) :pointer
+(defcfun ("IupImageRGBA" iup-image-rgba) :pointer
   (width :int)
   (height :int)
   (pixmap :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupItem" IupItem) :pointer
+(defcfun ("IupItem" iup-item) :pointer
   (title :string)
   (action :string))
 
-(defcfun ("IupSubmenu" IupSubmenu) :pointer
+(defcfun ("IupSubmenu" iup-submenu) :pointer
   (title :string)
   (child :pointer))
 
-(defcfun ("IupSeparator" IupSeparator) :pointer)
+(defcfun ("IupSeparator" iup-separator) :pointer)
 
-(defcfun ("IupMenu" IupMenu) :pointer
+(defcfun ("IupMenu" iup-menu) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupMenuv" IupMenuv) :pointer
+(defcfun ("IupMenuv" iup-menuv) :pointer
   (children :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupButton" IupButton) :pointer
+(defcfun ("IupButton" %button) :pointer
   (title :string)
   (action :string))
 
-(defcfun ("IupFlatButton" IupFlatButton) :pointer
+(defun button (title &optional (action (null-pointer)))
+  (%button title action))
+
+(defcfun ("IupFlatButton" iup-flat-button) :pointer
   (title :string))
 
-(defcfun ("IupFlatToggle" IupFlatToggle) :pointer
+(defcfun ("IupFlatToggle" iup-flat-toggle) :pointer
   (title :string))
 
-(defcfun ("IupDropButton" IupDropButton) :pointer
+(defcfun ("IupDropButton" iup-drop-button) :pointer
   (child :pointer))
 
-(defcfun ("IupFlatLabel" IupFlatLabel) :pointer
+(defcfun ("IupFlatLabel" iup-flat-label) :pointer
   (title :string))
 
-(defcfun ("IupFlatSeparator" IupFlatSeparator) :pointer)
+(defcfun ("IupFlatSeparator" iup-flat-separator) :pointer)
 
-(defcfun ("IupCanvas" IupCanvas) :pointer
+(defcfun ("IupCanvas" iup-canvas) :pointer
   (action :string))
 
 (defcfun ("IupDialog" dialog) :pointer
   (child :pointer))
 
-(defcfun ("IupUser" IupUser) :pointer)
+(defcfun ("IupUser" iup-user) :pointer)
 
 (defcfun ("IupLabel" label) :pointer
   (title :string))
 
-(defcfun ("IupList" IupList) :pointer
+(defcfun ("IupList" iup-list) :pointer
   (action :string))
 
-(defcfun ("IupText" IupText) :pointer
+(defcfun ("IupText" iup-text) :pointer
   (action :string))
 
-(defcfun ("IupMultiLine" IupMultiLine) :pointer
+(defcfun ("IupMultiLine" iup-multi-line) :pointer
   (action :string))
 
-(defcfun ("IupToggle" IupToggle) :pointer
+(defcfun ("IupToggle" iup-toggle) :pointer
   (title :string)
   (action :string))
 
-(defcfun ("IupTimer" IupTimer) :pointer)
+(defcfun ("IupTimer" iup-timer) :pointer)
 
-(defcfun ("IupClipboard" IupClipboard) :pointer)
+(defcfun ("IupClipboard" iup-clipboard) :pointer)
 
-(defcfun ("IupProgressBar" IupProgressBar) :pointer)
+(defcfun ("IupProgressBar" iup-progress-bar) :pointer)
 
-(defcfun ("IupVal" IupVal) :pointer
+(defcfun ("IupVal" iup-val) :pointer
   (type :string))
 
-(defcfun ("IupTabs" IupTabs) :pointer
+(defcfun ("IupTabs" iup-tabs) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupTabsv" IupTabsv) :pointer
+(defcfun ("IupTabsv" iup-tabsv) :pointer
   (children :pointer))
 
-(defcfun ("IupFlatTabs" IupFlatTabs) :pointer
+(defcfun ("IupFlatTabs" iup-flat-tabs) :pointer
   (child :pointer)
   &rest)
 
-(defcfun ("IupFlatTabsv" IupFlatTabsv) :pointer
+(defcfun ("IupFlatTabsv" iup-flat-tabsv) :pointer
   (children :pointer))
 
-(defcfun ("IupTree" IupTree) :pointer)
+(defcfun ("IupTree" iup-tree) :pointer)
 
-(defcfun ("IupLink" IupLink) :pointer
+(defcfun ("IupLink" iup-link) :pointer
   (url :string)
   (title :string))
 
@@ -694,7 +697,7 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSaveImageAsText" IupSaveImageAsText) :int
+(defcfun ("IupSaveImageAsText" iup-save-image-as-text) :int
   (ih :pointer)
   (file_name :string)
   (format :string)
@@ -702,13 +705,13 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupTextConvertLinColToPos" IupTextConvertLinColToPos) :void
+(defcfun ("IupTextConvertLinColToPos" iup-text-convert-lin-col-to-pos) :void
   (ih :pointer)
   (lin :int)
   (col :int)
   (pos :pointer))
 
-(defcfun ("IupTextConvertPosToLinCol" IupTextConvertPosToLinCol) :void
+(defcfun ("IupTextConvertPosToLinCol" iup-text-convert-pos-to-lin-col) :void
   (ih :pointer)
   (pos :int)
   (lin :pointer)
@@ -716,27 +719,27 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupConvertXYToPos" IupConvertXYToPos) :int
+(defcfun ("IupConvertXYToPos" iup-convert-xyto-pos) :int
   (ih :pointer)
   (x :int)
   (y :int))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupTreeSetUserId" IupTreeSetUserId) :int
+(defcfun ("IupTreeSetUserId" iup-tree-set-user-id) :int
   (ih :pointer)
   (id :int)
   (userid :pointer))
 
-(defcfun ("IupTreeGetUserId" IupTreeGetUserId) :pointer
+(defcfun ("IupTreeGetUserId" iup-tree-get-user-id) :pointer
   (ih :pointer)
   (id :int))
 
-(defcfun ("IupTreeGetId" IupTreeGetId) :int
+(defcfun ("IupTreeGetId" iup-tree-get-id) :int
   (ih :pointer)
   (userid :pointer))
 
-(defcfun ("IupTreeSetAttributeHandle" IupTreeSetAttributeHandle) :void
+(defcfun ("IupTreeSetAttributeHandle" iup-tree-set-attribute-handle) :void
   (ih :pointer)
   (a :string)
   (id :int)
@@ -748,26 +751,26 @@
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupFileDlg" IupFileDlg) :pointer)
+(defcfun ("IupFileDlg" iup-file-dlg) :pointer)
 
-(defcfun ("IupMessageDlg" IupMessageDlg) :pointer)
+(defcfun ("IupMessageDlg" iup-message-dlg) :pointer)
 
-(defcfun ("IupColorDlg" IupColorDlg) :pointer)
+(defcfun ("IupColorDlg" iup-color-dlg) :pointer)
 
-(defcfun ("IupFontDlg" IupFontDlg) :pointer)
+(defcfun ("IupFontDlg" iup-font-dlg) :pointer)
 
-(defcfun ("IupProgressDlg" IupProgressDlg) :pointer)
+(defcfun ("IupProgressDlg" iup-progress-dlg) :pointer)
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetFile" IupGetFile) :int
+(defcfun ("IupGetFile" iup-get-file) :int
   (arq :string))
 
 (defcfun ("IupMessage" message) :void
   (title :string)
   (msg :string))
 
-(defcfun ("IupMessagef" IupMessagef) :void
+(defcfun ("IupMessagef" iup-messagef) :void
   (title :string)
   (format :string)
   &rest)
@@ -775,18 +778,18 @@
 ; void IupMessageError(Ihandle* parent, const char* message);
 ; int IupMessageAlarm(Ihandle* parent, const char* title, const char *message, const char *buttons);
 
-(defcfun ("IupAlarm" IupAlarm) :int
+(defcfun ("IupAlarm" iup-alarm) :int
   (title :string)
   (msg :string)
   (b1 :string)
   (b2 :string)
   (b3 :string))
 
-(defcfun ("IupScanf" IupScanf) :int
+(defcfun ("IupScanf" iup-scanf) :int
   (format :string)
   &rest)
 
-(defcfun ("IupListDialog" IupListDialog) :int
+(defcfun ("IupListDialog" iup-list-dialog) :int
   (type :int)
   (title :string)
   (size :int)
@@ -796,11 +799,11 @@
   (max_lin :int)
   (marks :pointer))
 
-(defcfun ("IupGetText" IupGetText) :int
+(defcfun ("IupGetText" iup-get-text) :int
   (title :string)
   (text :string))
 
-(defcfun ("IupGetColor" IupGetColor) :int
+(defcfun ("IupGetColor" iup-get-color) :int
   (x :int)
   (y :int)
   (r :pointer)
@@ -809,14 +812,14 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetParam" IupGetParam) :int
+(defcfun ("IupGetParam" iup-get-param) :int
   (title :string)
   (action :pointer)
   (user_data :pointer)
   (format :string)
   &rest)
 
-(defcfun ("IupGetParamv" IupGetParamv) :int
+(defcfun ("IupGetParamv" iup-get-paramv) :int
   (title :string)
   (action :pointer)
   (user_data :pointer)
@@ -831,10 +834,10 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupLayoutDialog" IupLayoutDialog) :pointer
+(defcfun ("IupLayoutDialog" iup-layout-dialog) :pointer
   (dialog :pointer))
 
-(defcfun ("IupElementPropertiesDialog" IupElementPropertiesDialog) :pointer
+(defcfun ("IupElementPropertiesDialog" iup-element-properties-dialog) :pointer
   (elem :pointer))
 
 ; Ihandle* IupGlobalsDialog(void);
@@ -856,4 +859,3 @@
 (defconstant IUP_GETPARAM_INIT   -2)
 (defconstant IUP_GETPARAM_CANCEL -3)
 (defconstant IUP_GETPARAM_HELP   -4)
-

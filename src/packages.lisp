@@ -11,213 +11,213 @@
    ;;---------------------------------------------
    #:start
    #:stop
-   #:IupImageLibOpen
+   #:iup-image-lib-open
 
    #:main-loop
-   #:IupLoopStep
-   #:IupLoopStepWait
-   #:IupMainLoopLevel
-   #:IupFlush
-   #:IupExitLoop
+   #:loop-step
+   #:loop-step-wait
+   #:main-loop-level
+   #:flush
+   #:exit-loop
 
-   #:IupRecordInput
-   #:IupPlayInput
+   #:record-input
+   #:play-input
 
-   #:IupUpdate
-   #:IupUpdateChildren
-   #:IupRedraw
-   #:IupRefresh
-   #:IupRefreshChildren
+   #:iup-update
+   #:iup-update-children
+   #:iup-redraw
+   #:iup-refresh
+   #:iup-refresh-children
 
-   #:IupMapFont
-   #:IupUnMapFont
-   #:IupHelp
-   #:IupLoad
-   #:IupLoadBuffer
+   ; #:iup-map-font
+   ; #:iup-un-map-font
+   #:iup-help
+   #:iup-load
+   #:iup-load-buffer
 
    #:version
    #:version-date
    #:version-number
 
-   #:IupSetLanguage
-   #:IupGetLanguage
+   #:iup-set-language
+   #:iup-get-language
 
-   #:IupDestroy
-   #:IupDetach
-   #:IupAppend
-   #:IupInsert
-   #:IupGetChild
-   #:IupGetChildPos
-   #:IupGetChildCount
-   #:IupGetNextChild
-   #:IupGetBrother
-   #:IupGetParent
-   #:IupGetDialog
-   #:IupGetDialogChild
-   #:IupReparent
+   #:iup-destroy
+   #:iup-detach
+   #:iup-append
+   #:iup-insert
+   #:iup-get-child
+   #:iup-get-child-pos
+   #:iup-get-child-count
+   #:iup-get-next-child
+   #:iup-get-brother
+   #:iup-get-parent
+   #:iup-get-dialog
+   #:iup-get-dialog-child
+   #:iup-reparent
 
-   #:IupPopup
+   #:iup-popup
    #:show
    #:show-xy
-   #:IupHide
-   #:IupMap
-   #:IupUnmap
+   #:iup-hide
+   #:iup-map
+   #:iup-unmap
 
    #:set-attribute
-   #:IupStoreAttribute
-   #:IupSetAttributes
-   #:IupGetAttribute
-   #:IupGetAttributes
-   #:IupGetInt
-   #:IupGetInt2
-   #:IupGetIntInt
-   #:IupGetFloat
-   #:IupSetfAttribute
-   #:IupResetAttribute
-   #:IupGetAllAttributes
-   #:IupSetAtt
+   #:iup-store-attribute
+   #:iup-set-attributes
+   #:iup-get-attribute
+   #:iup-get-attributes
+   #:iup-get-int
+   #:iup-get-int2
+   #:iup-get-int-int
+   #:iup-get-float
+   #:iup-setf-attribute
+   #:iup-reset-attribute
+   #:iup-get-all-attributes
+   #:iup-set-att
 
-   #:IupSetAttributeId
-   #:IupStoreAttributeId
-   #:IupGetAttributeId
-   #:IupGetFloatId
-   #:IupGetIntId
-   #:IupSetfAttributeId
+   #:iup-set-attribute-id
+   #:iup-store-attribute-id
+   #:iup-get-attribute-id
+   #:iup-get-float-id
+   #:iup-get-int-id
+   #:iup-setf-attribute-id
 
-   #:IupSetAttributeId2
-   #:IupStoreAttributeId2
-   #:IupGetAttributeId2
-   #:IupGetIntId2
-   #:IupGetFloatId2
-   #:IupSetfAttributeId2
+   #:iup-set-attribute-id2
+   #:iup-store-attribute-id2
+   #:iup-get-attribute-id2
+   #:iup-get-int-id2
+   #:iup-get-float-id2
+   #:iup-setf-attribute-id2
 
-   #:IupSetGlobal
-   #:IupStoreGlobal
-   #:IupGetGlobal
+   #:iup-set-global
+   #:iup-store-global
+   #:iup-get-global
 
-   #:IupSetFocus
-   #:IupGetFocus
-   #:IupPreviousField
-   #:IupNextField
+   #:iup-set-focus
+   #:iup-get-focus
+   #:iup-previous-field
+   #:iup-next-field
 
-   #:IupGetCallback
-   #:IupSetCallback
-   #:IupSetCallbacks
+   #:iup-get-callback
+   #:set-callback
+   #:iup-set-callbacks
 
-   #:IupGetFunction
-   #:IupSetFunction
-   #:IupGetActionName
+   #:iup-get-function
+   #:iup-set-function
+   #:iup-get-action-name
 
-   #:IupGetHandle
-   #:IupSetHandle
-   #:IupGetAllNames
-   #:IupGetAllDialogs
-   #:IupGetName
+   #:iup-get-handle
+   #:iup-set-handle
+   #:iup-get-all-names
+   #:iup-get-all-dialogs
+   #:iup-get-name
 
-   #:IupSetAttributeHandle
-   #:IupGetAttributeHandle
+   #:iup-set-attribute-handle
+   #:iup-get-attribute-handle
 
-   #:IupGetClassName
-   #:IupGetClassType
-   #:IupGetAllClasses
-   #:IupGetClassAttributes
-   #:IupGetClassCallbacks
-   #:IupSaveClassAttributes
-   #:IupCopyClassAttributes
-   #:IupSetClassDefaultAttribute
-   #:IupClassMatch
+   #:iup-get-class-name
+   #:iup-get-class-type
+   #:iup-get-all-classes
+   #:iup-get-class-attributes
+   #:iup-get-class-callbacks
+   #:iup-save-class-attributes
+   #:iup-copy-class-attributes
+   #:iup-set-class-default-attribute
+   #:iup-class-match
 
-   #:IupCreate
-   #:IupCreatev
-   #:IupCreatep
+   #:iup-create
+   #:iup-createv
+   #:iup-createp
 
    ;;---------------------------------------------
    ;; Elements
    ;;---------------------------------------------
-   #:IupFill
-   #:IupRadio
+   #:iup-fill
+   #:iup-radio
    #:vbox
-   ;#:IupVboxv
-   #:IupZbox
-   #:IupZboxv
-   #:IupHbox
-   #:IupHboxv
+   ;#:iup-vboxv
+   #:iup-zbox
+   #:iup-zboxv
+   #:iup-hbox
+   #:iup-hboxv
 
-   #:IupNormalizer
-   #:IupNormalizerv
+   #:iup-normalizer
+   #:iup-normalizerv
 
-   #:IupCbox
-   #:IupCboxv
-   #:IupSbox
-   #:IupSplit
-   #:IupScrollBox
-   #:IupGridBox
-   #:IupGridBoxv
-   #:IupExpander
+   #:iup-cbox
+   #:iup-cboxv
+   #:iup-sbox
+   #:iup-split
+   #:iup-scroll-box
+   #:iup-grid-box
+   #:iup-grid-boxv
+   #:iup-expander
 
-   #:IupFrame
+   #:iup-frame
 
-   #:IupImage
-   #:IupImageRGB
-   #:IupImageRGBA
+   #:iup-image
+   #:iup-image-rgb
+   #:iup-image-rgba
 
-   #:IupItem
-   #:IupSubmenu
-   #:IupSeparator
-   #:IupMenu
-   #:IupMenuv
+   #:iup-item
+   #:iup-submenu
+   #:iup-separator
+   #:iup-menu
+   #:iup-menuv
 
-   #:IupButton
-   #:IupCanvas
+   #:button
+   #:iup-canvas
    #:dialog
-   #:IupUser
+   #:iup-user
    #:label
-   #:IupList
-   #:IupText
-   #:IupMultiLine
-   #:IupToggle
-   #:IupTimer
-   #:IupClipboard
-   #:IupProgressBar
-   #:IupVal
-   #:IupTabs
-   #:IupTabsv
-   #:IupTree
-   #:IupLink
+   #:iup-list
+   #:iup-text
+   #:iup-multi-line
+   #:iup-toggle
+   #:iup-timer
+   #:iup-clipboard
+   #:iup-progress-bar
+   #:iup-val
+   #:iup-tabs
+   #:iup-tabsv
+   #:iup-tree
+   #:iup-link
    ;; IupImage utility
-   #:IupSaveImageAsText
+   #:iup-save-image-as-text
    ;; IupText and IupScintilla utilities
-   #:IupTextConvertLinColToPos
-   #:IupTextConvertPosToLinCol
+   #:iup-text-convert-lin-col-to-pos
+   #:iup-text-convert-pos-to-lin-col
    ;; IupText, IupList, IupTree, IupMatrix and IupScintilla utility
-   #:IupConvertXYToPos
+   #:iup-convert-xyto-pos
    ;; IupTree utilities
-   #:IupTreeSetUserId
-   #:IupTreeGetUserId
-   #:IupTreeGetId
+   #:iup-tree-set-user-id
+   #:iup-tree-get-user-id
+   #:iup-tree-get-id
 
    ;;---------------------------------------------
    ;; Pre-definided dialogs
    ;;---------------------------------------------
-   #:IupFileDlg
-   #:IupMessageDlg
-   #:IupColorDlg
-   #:IupFontDlg
+   #:iup-file-dlg
+   #:iup-message-dlg
+   #:iup-color-dlg
+   #:iup-font-dlg
 
-   #:IupGetFile
+   #:iup-get-file
    #:message
-   #:IupMessagef
-   #:IupAlarm
-   #:IupScanf
-   #:IupListDialog
-   #:IupGetText
-   #:IupGetColor
+   #:iup-messagef
+   #:iup-alarm
+   #:iup-scanf
+   #:iup-list-dialog
+   #:iup-get-text
+   #:iup-get-color
 
-   #:IupGetParam
-   #:IupGetParamv
+   #:iup-get-param
+   #:iup-get-paramv
 
-   #:IupLayoutDialog
-   #:IupElementPropertiesDialog
+   #:iup-layout-dialog
+   #:iup-element-properties-dialog
 
     #:iup-open
     #:with-iup
@@ -238,4 +238,4 @@
     #:iup-set-attributes
 
     #:iup-defgui
-    #:iup-defgui-template))   
+    #:iup-defgui-template))

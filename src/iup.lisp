@@ -79,7 +79,7 @@
 ;;--------------------------------------------------------------------------------------
 (defmacro iup-set-all-events ()
   '(mapcar #'(lambda (x)
-	      (iup:IupSetCallback (symbol-value (first x))
+	      (set-callback (symbol-value (first x))
 	       		      (second x)
 	       		      (cffi:get-callback (print (third x)))))
 	  *%iup-event-connections*))
@@ -92,13 +92,13 @@
 			 (list :pointer x)) childs) '(:int 0))))
 
 ;(%def-iup-container-macro iup:IupVbox iup-vbox)
-(%def-iup-container-macro iup:IupHbox iup-hbox)
-(%def-iup-container-macro iup:IupTabs iup-tabs)
-(%def-iup-container-macro iup:IupGridBox iup-grid-box)
+;(%def-iup-container-macro iup:IupHbox iup-hbox)
+;(%def-iup-container-macro iup:IupTabs iup-tabs)
+;(%def-iup-container-macro iup:IupGridBox iup-grid-box)
 ;;--------------------------------------------------------------------------------------
 ;;--------------------------------------------------------------------------------------
 (defun iup-attribute (ih &optional (attr-name "VALUE"))
-  (iup:IupGetAttribute ih attr-name))
+  (iup-get-attribute ih attr-name))
 
 (defun (setf iup-attribute) (val ih &optional (attr-name "VALUE"))
   (set-attribute ih (format nil "~A" attr-name) (format nil "~A" val)))
@@ -154,13 +154,13 @@
 			     ((and (symbolp clss)
 				   (string= "APPLY-TEMPLATE" (string clss)))
 			      (error "There is no Templates :("))
-			     (T `(iup:IupCreate ,clss)))))
-	       (when parent (list `(iup:IupAppend ,parent ,name)))))
+			     (T `(iup:iup-create ,clss)))))
+	       (when parent (list `(iup-append ,parent ,name)))))
 	(iter (for ch in chlds)
 	      (cond
 		((symbolp ch)
 		 (if (member ch args)
-		     (setf sets (append sets (list `(iup:IupAppend ,name ,ch))))
+		     (setf sets (append sets (list `(iup-append ,name ,ch))))
 		     (error "Undefined symbol: ~A" ch)))
 		(T (multiple-value-bind (l s) (%iup-defgui-defun-lets/sets ch args name)
 		     (when l (setf lets (append lets l)))
