@@ -8,7 +8,8 @@
 	(progn
     (iup:start)
     (let* ((b (iup:button "OK"))
-           (v (iup:vbox b))
+           (l (iup:label "Hello world from IUP."))
+           (v (iup:vbox l b))
            (d (iup:dialog v)))
       (iup:set-attribute d "TITLE" "Hello World 3")
       (iup:set-callback b "ACTION" btn-exit-cb)
