@@ -1,7 +1,8 @@
 ;;;; package.lisp
 
-(defpackage #:iup
+(defpackage #:cl-iup
   (:use #:cl #:cffi #:iterate)
+  (:nicknames :iup)
   (:export
    ;;=============================================
    ;; CFFI

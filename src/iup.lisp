@@ -39,9 +39,9 @@
        ,@body
        :default)))
 ;;--------------------------------------------------------------------------------------
-(defmacro iup-lambda-callback (args body)
+(defmacro iup-lambda-callback (args &body body)
   (let ((cb-name (gensym "%iup-cb-")))
-    `(cffi:get-callback (cffi:defcallback ,cb-name :iup-action ,args ,body))))
+    `(cffi:get-callback (cffi:defcallback ,cb-name :iup-action ,args ,@body))))
 ;;--------------------------------------------------------------------------------------
 ;=======================================================================================
 ;; IUP-DEFEVENT: in-current-package

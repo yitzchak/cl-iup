@@ -1,8 +1,9 @@
-(ql:quickload :iup)
+(in-package #:iup/examples)
 
-(unwind-protect
-	(progn
-    (iup:start)
-    (iup:message "Hello World 1" "Hello world from IUP."))
-  (iup:stop))
+(defun example2-1 ()
+  (unwind-protect
+	  (progn
+      (iup:start)
+      (iup:message "Hello World 1" "Hello world from IUP."))
+    (iup:stop)))
 
