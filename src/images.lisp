@@ -20,7 +20,7 @@
 ;;--------------------------------------------------------------------------------------
 
 (cffi:defcfun ("IupSaveImageAsText" iup-save-image-as-text) :int
-  (ih :pointer)
+  (ih iup-handle)
   (file_name :string)
   (format :string)
   (name :string))

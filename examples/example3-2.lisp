@@ -17,7 +17,10 @@
         (setf (iup:attribute multitext :expand) "YES")
         (setf (iup:attribute dlg :title) "Simple Notepad")
         (setf (iup:attribute dlg :size) "QUARTERxQUARTER")
-        (iup:set-attribute-handle dlg :menu menu)
+        (setf (iup:attribute dlg :menu) menu)
+        (iup:set-callback item-exit "ACTION"
+          (iup:iup-lambda-callback ()
+            :close))
         (iup:show-xy dlg :center :center)
         (iup:reset-attribute dlg :usersize))
       (iup:main-loop))

@@ -1,141 +1,93 @@
 (in-package #:iup)
 
-(cffi:defcfun ("IupFill" filler) :pointer)
+(cffi:defcfun ("IupFill" filler) iup-handle)
 
-(cffi:defcfun ("IupSpace" spacer) :pointer)
+(cffi:defcfun ("IupSpace" spacer) iup-handle)
 
 ;;--------------------------------------------------------------------------------------
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupCbox" iup-cbox) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupCboxv" %cboxv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupCboxv" cboxv) iup-handle
+  (children iup-handles))
 
 (defun cbox (&rest children)
-  (with-ihandle-sequence (a children)
-    (%cboxv a)))
+  (cboxv children))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupGridBox" iup-grid-box) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupGridBoxv" %grid-boxv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupGridBoxv" grid-boxv) iup-handle
+  (children iup-handles))
 
 (defun grid-box (&rest children)
-  (with-ihandle-sequence (a children)
-    (%grid-boxv a)))
+  (grid-boxv children))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupHbox" iup-hbox) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupHboxv" %hboxv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupHboxv" hboxv) iup-handle
+  (children iup-handles))
 
 (defun hbox (&rest children)
-  (with-ihandle-sequence (a children)
-    (%hboxv a)))
+  (hboxv children))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupVbox" %vbox) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupVboxv" %vboxv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupVboxv" vboxv) iup-handle
+  (children iup-handles))
 
 (defun vbox (&rest children)
-  (with-ihandle-sequence (a children)
-    (%vboxv a)))
+  (vboxv children))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupZbox" iup-zbox) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupZboxv" %zboxv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupZboxv" zboxv) iup-handle
+  (children iup-handles))
 
 (defun zbox (&rest children)
-  (with-ihandle-sequence (a children)
-    (%zboxv a)))
+  (zboxv children))
 
 ;;--------------------------------------------------------------------------------------
 
-(cffi:defcfun ("IupRadio" radio) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupRadio" radio) iup-handle
+  (child iup-handle))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupNormalizer" iup-normalizer) :pointer
-;   (ih_first :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupNormalizerv" %normalizerv) :pointer
-  (ih_list :pointer))
+(cffi:defcfun ("IupNormalizerv" normalizerv) iup-handle
+  (ih_list iup-handles))
 
 (defun normalizer (&rest children)
-  (with-ihandle-sequence (a children)
-    (%normalizerv a)))
+  (normalizerv children))
 
 ;;--------------------------------------------------------------------------------------
 
-(cffi:defcfun ("IupFrame" frame) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupFrame" frame) iup-handle
+  (child iup-handle))
 
-(cffi:defcfun ("IupFlatFrame" flat-frame) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupFlatFrame" flat-frame) iup-handle
+  (child iup-handle))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupTabs" iup-tabs) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupTabsv" %tabsv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupTabsv" tabsv) iup-handle
+  (children iup-handles))
 
 (defun tabs (&rest children)
-  (with-ihandle-sequence (a children)
-    (%tabsv a)))
+  (tabsv children))
 
-; Don't import variadic b.c. it is not needed
-; (cffi:defcfun ("IupFlatTabs" iup-flat-tabs) :pointer
-;   (child :pointer)
-;   &rest)
-
-(cffi:defcfun ("IupFlatTabsv" %flat-tabsv) :pointer
-  (children :pointer))
+(cffi:defcfun ("IupFlatTabsv" flat-tabsv) iup-handle
+  (children iup-handles))
 
 (defun flat-tabs (&rest children)
-  (with-ihandle-sequence (a children)
-    (%flat-tabsv a)))
+  (flat-tabsv children))
 
-(cffi:defcfun ("IupBackgroundBox" background-box) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupBackgroundBox" background-box) iup-handle
+  (child iup-handle))
 
-(cffi:defcfun ("IupScrollBox" scroll-box) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupScrollBox" scroll-box) iup-handle
+  (child iup-handle))
 
-(cffi:defcfun ("IupFlatScrollBox" flat-scroll-box) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupFlatScrollBox" flat-scroll-box) iup-handle
+  (child iup-handle))
 
 ;;--------------------------------------------------------------------------------------
 
-(cffi:defcfun ("IupDetachBox" detach-box) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupDetachBox" detach-box) iup-handle
+  (child iup-handle))
 
-(cffi:defcfun ("IupExpander" expander) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupExpander" expander) iup-handle
+  (child iup-handle))
 
-(cffi:defcfun ("IupSbox" sbox) :pointer
-  (child :pointer))
+(cffi:defcfun ("IupSbox" sbox) iup-handle
+  (child iup-handle))
 
-(cffi:defcfun ("IupSplit" split) :pointer
+(cffi:defcfun ("IupSplit" split) iup-handle
   (child1 :pointer)
   (child2 :pointer))
 

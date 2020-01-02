@@ -3,20 +3,20 @@
 ;;--------------------------------------------------------------------------------------
 
 (cffi:defcfun ("IupPopup" iup-popup) :iup-status
-  (ih :pointer)
+  (ih iup-handle)
   (x :iup-position)
   (y :iup-position))
 
 (cffi:defcfun ("IupShow" show) :iup-status
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupShowXY" show-xy) :iup-status
-  (ih :pointer)
+  (ih iup-handle)
   (x :iup-position)
   (y :iup-position))
 
 (cffi:defcfun ("IupHide" iup-hide) :iup-status
-  (ih :pointer))
+  (ih iup-handle))
 
 ;;--------------------------------------------------------------------------------------
 ;;======================================================================================
@@ -24,15 +24,15 @@
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
 
-(cffi:defcfun ("IupFileDlg" iup-file-dlg) :pointer)
+(cffi:defcfun ("IupFileDlg" iup-file-dlg) iup-handle)
 
-(cffi:defcfun ("IupMessageDlg" iup-message-dlg) :pointer)
+(cffi:defcfun ("IupMessageDlg" iup-message-dlg) iup-handle)
 
-(cffi:defcfun ("IupColorDlg" iup-color-dlg) :pointer)
+(cffi:defcfun ("IupColorDlg" iup-color-dlg) iup-handle)
 
-(cffi:defcfun ("IupFontDlg" iup-font-dlg) :pointer)
+(cffi:defcfun ("IupFontDlg" iup-font-dlg) iup-handle)
 
-(cffi:defcfun ("IupProgressDlg" iup-progress-dlg) :pointer)
+(cffi:defcfun ("IupProgressDlg" iup-progress-dlg) iup-handle)
 
 ;;--------------------------------------------------------------------------------------
 
@@ -107,10 +107,10 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(cffi:defcfun ("IupLayoutDialog" iup-layout-dialog) :pointer
+(cffi:defcfun ("IupLayoutDialog" iup-layout-dialog) iup-handle
   (dialog :pointer))
 
-(cffi:defcfun ("IupElementPropertiesDialog" iup-element-properties-dialog) :pointer
+(cffi:defcfun ("IupElementPropertiesDialog" iup-element-properties-dialog) iup-handle
   (elem :pointer))
 
 ; Ihandle* IupGlobalsDialog(void);

@@ -7,7 +7,7 @@
 
 (cffi:defcfun ("IupSetHandle" iup-set-handle) :pointer
   (name :string)
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupGetAllNames" iup-get-all-names) :int
   (names :pointer)
@@ -18,6 +18,6 @@
   (n :int))
 
 (cffi:defcfun ("IupGetName" iup-get-name) :string
-  (ih :pointer))
+  (ih iup-handle))
 
 

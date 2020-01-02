@@ -1,20 +1,20 @@
 (in-package #:iup)
 
 (cffi:defcfun ("IupUpdate" iup-update) :void
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupUpdateChildren" iup-update-children) :void
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupRedraw" iup-redraw) :void
-  (ih :pointer)
+  (ih iup-handle)
   (children :int))
 
 (cffi:defcfun ("IupMap" iup-map) :iup-status
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupUnmap" iup-unmap) :void
-  (ih :pointer))
+  (ih iup-handle))
 
 ;;--------------------------------------------------------------------------------------
 
@@ -22,10 +22,10 @@
 ;;--------------------------------------------------------------------------------------
 
 (cffi:defcfun ("IupGetClassName" iup-get-class-name) :string
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupGetClassType" iup-get-class-type) :string
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupGetAllClasses" iup-get-all-classes) :int
   (names :pointer)
@@ -42,7 +42,7 @@
   (n :int))
 
 (cffi:defcfun ("IupSaveClassAttributes" iup-save-class-attributes) :void
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupCopyClassAttributes" iup-copy-class-attributes) :void
   (src_ih :pointer)
@@ -54,11 +54,11 @@
   (value :string))
 
 (cffi:defcfun ("IupClassMatch" iup-class-match) :int
-  (ih :pointer)
+  (ih iup-handle)
   (classname :string))
 
 (cffi:defcfun ("IupDestroy" iup-destroy) :void
-  (ih :pointer))
+  (ih iup-handle))
 
 
 ;;--------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@
 ;;--------------------------------------------------------------------------------------
 
 (cffi:defcfun ("IupConvertXYToPos" iup-convert-xyto-pos) :int
-  (ih :pointer)
+  (ih iup-handle)
   (x :int)
   (y :int))
 

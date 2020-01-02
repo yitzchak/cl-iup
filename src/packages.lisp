@@ -123,7 +123,11 @@
    #:iup-get-name
 
    #:set-attribute-handle
-   #:iup-get-attribute-handle
+   #:get-attribute-handle
+   #:set-attribute-handle-id
+   #:get-attribute-handle-id
+   #:set-attribute-handle-id2
+   #:get-attribute-handle-id2
 
    #:iup-get-class-name
    #:iup-get-class-type
@@ -143,18 +147,26 @@
    #:filler
    #:spacer
 
+   #:cboxv
    #:cbox
+   #:grid-boxv
    #:grid-box
+   #:hboxv
    #:hbox
+   #:vboxv
    #:vbox
+   #:zboxv
    #:zbox
 
    #:radio
+   #:normalizerv
    #:normalizer
 
    #:frame
    #:flat-frame
+   #:tabsv
    #:tabs
+   #:flat-tabsv
    #:flat-tabs
    #:background-box
    #:scroll-box
@@ -171,6 +183,7 @@
    #:item
    #:submenu
    #:separator
+   #:menuv
    #:menu
 
    #:button

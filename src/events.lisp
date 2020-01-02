@@ -17,16 +17,16 @@
 ;;--------------------------------------------------------------------------------------
 
 (cffi:defcfun ("IupGetCallback" iup-get-callback) :pointer
-  (ih :pointer)
+  (ih iup-handle)
   (name :string))
 
 (cffi:defcfun ("IupSetCallback" set-callback) :pointer
-  (ih :pointer)
+  (ih iup-handle)
   (name :string)
   (func :pointer))
 
 (cffi:defcfun ("IupSetCallbacks" iup-set-callbacks) :pointer
-  (ih :pointer)
+  (ih iup-handle)
   (name :string)
   (func :pointer)
   &rest)

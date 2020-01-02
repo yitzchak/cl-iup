@@ -3,14 +3,14 @@
 ;;--------------------------------------------------------------------------------------
 
 (cffi:defcfun ("IupSetFocus" iup-set-focus) :pointer
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupGetFocus" iup-get-focus) :pointer)
 
 (cffi:defcfun ("IupPreviousField" iup-previous-field) :pointer
-  (ih :pointer))
+  (ih iup-handle))
 
 (cffi:defcfun ("IupNextField" iup-next-field) :pointer
-  (ih :pointer))
+  (ih iup-handle))
 
 
