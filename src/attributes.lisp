@@ -4,6 +4,81 @@
 
 ;;--------------------------------------------------------------------------------------
 
+(defcfun ("IupSetAttribute" set-attribute) :void
+  (ih :pointer)
+  (name :string)
+  (value :pointer))
+
+(defcfun ("IupSetStrAttribute" set-str-attribute) :void
+  (ih :pointer)
+  (name :string)
+  (value :string))
+
+(defcfun ("IupSetAttributeId" set-attribute-id) :void
+  (ih :pointer)
+  (name :string)
+  (id :int)
+  (value :pointer))
+
+(defcfun ("IupSetStrAttributeId" set-str-attribute-id) :void
+  (ih :pointer)
+  (name :string)
+  (id :int)
+  (value :string))
+
+(defcfun ("IupSetAttributeId2" set-attribute-id2) :void
+  (ih :pointer)
+  (name :string)
+  (lin :int)
+  (col :int)
+  (value :pointer))
+
+(defcfun ("IupSetStrAttributeId2" set-str-attribute-id2) :void
+  (ih :pointer)
+  (name :string)
+  (lin :int)
+  (col :int)
+  (value :string))
+
+;;--------------------------------------------------------------------------------------
+
+(defcfun ("IupSetInt" set-int-attribute) :void
+  (ih :pointer)
+  (name :string)
+  (value :int))
+
+(defcfun ("IupSetDouble" set-double-attribute) :void
+  (ih :pointer)
+  (name :string)
+  (value :double))
+
+(defcfun ("IupSetIntId" set-int-attribute-id) :void
+  (ih :pointer)
+  (name :string)
+  (id :int)
+  (value :int))
+
+(defcfun ("IupSetDoubleId" set-double-attribute-id) :void
+  (ih :pointer)
+  (name :string)
+  (id :int)
+  (value :double))
+
+(defcfun ("IupSetIntId2" set-int-attribute-id2) :void
+  (ih :pointer)
+  (name :string)
+  (lin :int)
+  (col :int)
+  (value :int))
+
+(defcfun ("IupSetDoubleId2" set-double-attribute-id2) :void
+  (ih :pointer)
+  (name :string)
+  (lin :int)
+  (col :int)
+  (value :double))
+
+
 (defcfun ("IupResetAttribute" iup-reset-attribute) :void
   (ih :pointer)
   (name :string))
@@ -30,16 +105,8 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttribute" set-attribute) :void
-  (ih :pointer)
-  (name :string)
-  (value :string))
-
-; void      IupSetStrAttribute(Ihandle* ih, const char* name, const char* value);
 ; void      IupSetStrf        (Ihandle* ih, const char* name, const char* format, ...);
-; void      IupSetInt         (Ihandle* ih, const char* name, int value);
 ; void      IupSetFloat       (Ihandle* ih, const char* name, float value);
-; void      IupSetDouble      (Ihandle* ih, const char* name, double value);
 ; void      IupSetRGB         (Ihandle* ih, const char* name, unsigned char r, unsigned char g, unsigned char b);
 
 ;;--------------------------------------------------------------------------------------
@@ -71,17 +138,8 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttributeId" iup-set-attribute-id) :void
-  (ih :pointer)
-  (name :string)
-  (id :int)
-  (value :string))
-
-; void  IupSetStrAttributeId(Ihandle* ih, const char* name, int id, const char *value);
 ; void  IupSetStrfId(Ihandle* ih, const char* name, int id, const char* format, ...);
-; void  IupSetIntId(Ihandle* ih, const char* name, int id, int value);
 ; void  IupSetFloatId(Ihandle* ih, const char* name, int id, float value);
-; void  IupSetDoubleId(Ihandle* ih, const char* name, int id, double value);
 ; void  IupSetRGBId(Ihandle* ih, const char* name, int id, unsigned char r, unsigned char g, unsigned char b);
 
 ;;--------------------------------------------------------------------------------------
@@ -106,18 +164,8 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttributeId2" iup-set-attribute-id2) :void
-  (ih :pointer)
-  (name :string)
-  (lin :int)
-  (col :int)
-  (value :string))
-
-; void  IupSetStrAttributeId2(Ihandle* ih, const char* name, int lin, int col, const char* value);
 ; void  IupSetStrfId2(Ihandle* ih, const char* name, int lin, int col, const char* format, ...);
-; void  IupSetIntId2(Ihandle* ih, const char* name, int lin, int col, int value);
 ; void  IupSetFloatId2(Ihandle* ih, const char* name, int lin, int col, float value);
-; void  IupSetDoubleId2(Ihandle* ih, const char* name, int lin, int col, double value);
 ; void  IupSetRGBId2(Ihandle* ih, const char* name, int lin, int col, unsigned char r, unsigned char g, unsigned char b);
 
 ;;--------------------------------------------------------------------------------------
@@ -187,4 +235,26 @@
 
 ; int IupStringCompare(const char* str1, const char* str2, int casesensitive, int lexicographic);
 
+(defgeneric (setf attribute) (value ih name &rest ids))
+
+(defmethod (setf attribute) ((value string) ih name &rest ids)
+  (let ((n (format nil "~:@(~A~)" name)))
+    (ecase (length ids)
+      (0 (set-str-attribute ih n value))
+      (1 (apply #'set-str-attribute-id ih n value ids))
+      (2 (apply #'set-str-attribute-id2 ih n value ids)))))
+
+(defmethod (setf attribute) ((value integer) ih name &rest ids)
+  (let ((n (format nil "~:@(~A~)" name)))
+    (ecase (length ids)
+      (0 (set-int-attribute ih n value))
+      (1 (apply #'set-int-attribute-id ih n value ids))
+      (2 (apply #'set-int-attribute-id2 ih n value ids)))))
+
+(defmethod (setf attribute) ((value float) ih name &rest ids)
+  (let ((n (format nil "~:@(~A~)" name)))
+    (ecase (length ids)
+      (0 (set-double-attribute ih n value))
+      (1 (apply #'set-double-attribute-id ih n value ids))
+      (2 (apply #'set-double-attribute-id2 ih n value ids)))))
 

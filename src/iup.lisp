@@ -97,19 +97,19 @@
 ;(%def-iup-container-macro iup:IupGridBox iup-grid-box)
 ;;--------------------------------------------------------------------------------------
 ;;--------------------------------------------------------------------------------------
-(defun iup-attribute (ih &optional (attr-name "VALUE"))
-  (iup-get-attribute ih attr-name))
+;(defun iup-attribute (ih &optional (attr-name "VALUE"))
+;  (iup-get-attribute ih attr-name))
 
-(defun (setf iup-attribute) (val ih &optional (attr-name "VALUE"))
-  (set-attribute ih (format nil "~A" attr-name) (format nil "~A" val)))
+;(defun (setf iup-attribute) (val ih &optional (attr-name "VALUE"))
+;  (set-attribute ih (format nil "~A" attr-name) (format nil "~A" val)))
 
-(defmethod (setf attribute) (val ih &optional (attr-name :value))
-  (set-attribute ih (format nil "~:(~A~)" attr-name) (format nil "~A" val)))
+;(defmethod (setf attribute) (val ih &optional (attr-name :value))
+;  (set-attribute ih (format nil "~:(~A~)" attr-name) (format nil "~A" val)))
 ;;--------------------------------------------------------------------------------------
-(defun iup-set-attributes (ih &rest attributes)
-  (iter (for (a v) on attributes by #'cddr)
-	(setf (iup-attribute ih a) v)
-	(finally (return ih))))
+;(defun iup-set-attributes (ih &rest attributes)
+;  (iter (for (a v) on attributes by #'cddr)
+;	(setf (iup-attribute ih a) v)
+;	(finally (return ih))))
 ;;--------------------------------------------------------------------------------------
 ;=======================================================================================
 ;; IUP-DEFGUI

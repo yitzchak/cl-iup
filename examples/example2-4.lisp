@@ -8,7 +8,7 @@
              (l (iup:label "Hello world from IUP."))
              (v (iup:vbox l b))
              (d (iup:dialog v)))
-        (iup:set-attribute d "TITLE" "Hello World 3")
+        (setf (iup:attribute d :title) "Hello World 4")
         (iup:set-callback b "ACTION"
           (iup:iup-lambda-callback ()
             (iup:message "Hello World Message" "Hello world from IUP.")

@@ -64,8 +64,19 @@
    #:iup-map
    #:iup-unmap
 
+   #:attribute
+
    #:set-attribute
-   #:iup-store-attribute
+   #:set-str-attribute
+   #:set-attribute-id
+   #:set-str-attribute-id
+   #:set-attribute-id2
+   #:set-str-attribute-id2
+
+   #:set-int-attribute
+   #:set-int-attribute-id
+   #:set-int-attribute-id2
+
    #:iup-set-attributes
    #:iup-get-attribute
    #:iup-get-attributes
@@ -78,15 +89,11 @@
    #:iup-get-all-attributes
    #:iup-set-att
 
-   #:iup-set-attribute-id
-   #:iup-store-attribute-id
    #:iup-get-attribute-id
    #:iup-get-float-id
    #:iup-get-int-id
    #:iup-setf-attribute-id
 
-   #:iup-set-attribute-id2
-   #:iup-store-attribute-id2
    #:iup-get-attribute-id2
    #:iup-get-int-id2
    #:iup-get-float-id2
