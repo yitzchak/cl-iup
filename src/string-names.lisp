@@ -2,10 +2,10 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetLanguage" iup-set-language) :void
+(cffi:defcfun ("IupSetLanguage" iup-set-language) :void
   (lng :string))
 
-(defcfun ("IupGetLanguage" iup-get-language) :string)
+(cffi:defcfun ("IupGetLanguage" iup-get-language) :string)
 
 ; void      IupSetLanguageString(const char* name, const char* str);
 ; void      IupStoreLanguageString(const char* name, const char* str);

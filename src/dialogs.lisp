@@ -2,20 +2,20 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupPopup" iup-popup) :iup-status
+(cffi:defcfun ("IupPopup" iup-popup) :iup-status
   (ih :pointer)
   (x :iup-position)
   (y :iup-position))
 
-(defcfun ("IupShow" show) :iup-status
+(cffi:defcfun ("IupShow" show) :iup-status
   (ih :pointer))
 
-(defcfun ("IupShowXY" show-xy) :iup-status
+(cffi:defcfun ("IupShowXY" show-xy) :iup-status
   (ih :pointer)
   (x :iup-position)
   (y :iup-position))
 
-(defcfun ("IupHide" iup-hide) :iup-status
+(cffi:defcfun ("IupHide" iup-hide) :iup-status
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
@@ -24,26 +24,26 @@
 ;;======================================================================================
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupFileDlg" iup-file-dlg) :pointer)
+(cffi:defcfun ("IupFileDlg" iup-file-dlg) :pointer)
 
-(defcfun ("IupMessageDlg" iup-message-dlg) :pointer)
+(cffi:defcfun ("IupMessageDlg" iup-message-dlg) :pointer)
 
-(defcfun ("IupColorDlg" iup-color-dlg) :pointer)
+(cffi:defcfun ("IupColorDlg" iup-color-dlg) :pointer)
 
-(defcfun ("IupFontDlg" iup-font-dlg) :pointer)
+(cffi:defcfun ("IupFontDlg" iup-font-dlg) :pointer)
 
-(defcfun ("IupProgressDlg" iup-progress-dlg) :pointer)
+(cffi:defcfun ("IupProgressDlg" iup-progress-dlg) :pointer)
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetFile" iup-get-file) :int
+(cffi:defcfun ("IupGetFile" iup-get-file) :int
   (arq :string))
 
-(defcfun ("IupMessage" message) :void
+(cffi:defcfun ("IupMessage" message) :void
   (title :string)
   (msg :string))
 
-(defcfun ("IupMessagef" iup-messagef) :void
+(cffi:defcfun ("IupMessagef" iup-messagef) :void
   (title :string)
   (format :string)
   &rest)
@@ -51,18 +51,18 @@
 ; void IupMessageError(Ihandle* parent, const char* message);
 ; int IupMessageAlarm(Ihandle* parent, const char* title, const char *message, const char *buttons);
 
-(defcfun ("IupAlarm" iup-alarm) :int
+(cffi:defcfun ("IupAlarm" iup-alarm) :int
   (title :string)
   (msg :string)
   (b1 :string)
   (b2 :string)
   (b3 :string))
 
-(defcfun ("IupScanf" iup-scanf) :int
+(cffi:defcfun ("IupScanf" iup-scanf) :int
   (format :string)
   &rest)
 
-(defcfun ("IupListDialog" iup-list-dialog) :int
+(cffi:defcfun ("IupListDialog" iup-list-dialog) :int
   (type :int)
   (title :string)
   (size :int)
@@ -72,11 +72,11 @@
   (max_lin :int)
   (marks :pointer))
 
-(defcfun ("IupGetText" iup-get-text) :int
+(cffi:defcfun ("IupGetText" iup-get-text) :int
   (title :string)
   (text :string))
 
-(defcfun ("IupGetColor" iup-get-color) :int
+(cffi:defcfun ("IupGetColor" iup-get-color) :int
   (x :int)
   (y :int)
   (r :pointer)
@@ -85,14 +85,14 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetParam" iup-get-param) :int
+(cffi:defcfun ("IupGetParam" iup-get-param) :int
   (title :string)
   (action :pointer)
   (user_data :pointer)
   (format :string)
   &rest)
 
-(defcfun ("IupGetParamv" iup-get-paramv) :int
+(cffi:defcfun ("IupGetParamv" iup-get-paramv) :int
   (title :string)
   (action :pointer)
   (user_data :pointer)
@@ -107,10 +107,10 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupLayoutDialog" iup-layout-dialog) :pointer
+(cffi:defcfun ("IupLayoutDialog" iup-layout-dialog) :pointer
   (dialog :pointer))
 
-(defcfun ("IupElementPropertiesDialog" iup-element-properties-dialog) :pointer
+(cffi:defcfun ("IupElementPropertiesDialog" iup-element-properties-dialog) :pointer
   (elem :pointer))
 
 ; Ihandle* IupGlobalsDialog(void);

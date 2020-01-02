@@ -2,15 +2,15 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetFocus" iup-set-focus) :pointer
+(cffi:defcfun ("IupSetFocus" iup-set-focus) :pointer
   (ih :pointer))
 
-(defcfun ("IupGetFocus" iup-get-focus) :pointer)
+(cffi:defcfun ("IupGetFocus" iup-get-focus) :pointer)
 
-(defcfun ("IupPreviousField" iup-previous-field) :pointer
+(cffi:defcfun ("IupPreviousField" iup-previous-field) :pointer
   (ih :pointer))
 
-(defcfun ("IupNextField" iup-next-field) :pointer
+(cffi:defcfun ("IupNextField" iup-next-field) :pointer
   (ih :pointer))
 
 

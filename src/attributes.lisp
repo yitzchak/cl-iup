@@ -4,103 +4,102 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttribute" set-attribute) :void
+(cffi:defcfun ("IupSetAttribute" set-attribute) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (value :pointer))
 
-(defcfun ("IupSetStrAttribute" set-str-attribute) :void
+(cffi:defcfun ("IupSetStrAttribute" set-str-attribute) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (value :string))
 
-(defcfun ("IupSetAttributeId" set-attribute-id) :void
+(cffi:defcfun ("IupSetAttributeId" set-attribute-id) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int)
   (value :pointer))
 
-(defcfun ("IupSetStrAttributeId" set-str-attribute-id) :void
+(cffi:defcfun ("IupSetStrAttributeId" set-str-attribute-id) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int)
   (value :string))
 
-(defcfun ("IupSetAttributeId2" set-attribute-id2) :void
+(cffi:defcfun ("IupSetAttributeId2" set-attribute-id2) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int)
   (value :pointer))
 
-(defcfun ("IupSetStrAttributeId2" set-str-attribute-id2) :void
+(cffi:defcfun ("IupSetStrAttributeId2" set-str-attribute-id2) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int)
   (value :string))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetInt" set-int-attribute) :void
+(cffi:defcfun ("IupSetInt" set-int-attribute) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (value :int))
 
-(defcfun ("IupSetDouble" set-double-attribute) :void
+(cffi:defcfun ("IupSetDouble" set-double-attribute) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (value :double))
 
-(defcfun ("IupSetIntId" set-int-attribute-id) :void
+(cffi:defcfun ("IupSetIntId" set-int-attribute-id) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int)
   (value :int))
 
-(defcfun ("IupSetDoubleId" set-double-attribute-id) :void
+(cffi:defcfun ("IupSetDoubleId" set-double-attribute-id) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int)
   (value :double))
 
-(defcfun ("IupSetIntId2" set-int-attribute-id2) :void
+(cffi:defcfun ("IupSetIntId2" set-int-attribute-id2) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int)
   (value :int))
 
-(defcfun ("IupSetDoubleId2" set-double-attribute-id2) :void
+(cffi:defcfun ("IupSetDoubleId2" set-double-attribute-id2) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int)
   (value :double))
 
-
-(defcfun ("IupResetAttribute" iup-reset-attribute) :void
+(cffi:defcfun ("IupResetAttribute" reset-attribute) :void
   (ih :pointer)
-  (name :string))
+  (name iup-name))
 
-(defcfun ("IupGetAllAttributes" iup-get-all-attributes) :int
+(cffi:defcfun ("IupGetAllAttributes" iup-get-all-attributes) :int
   (ih :pointer)
   (names :pointer)
   (n :int))
 
 ; void      IupCopyAttributes(Ihandle* src_ih, Ihandle* dst_ih);
 
-(defcfun ("IupSetAtt" iup-set-att) :pointer
+(cffi:defcfun ("IupSetAtt" iup-set-att) :pointer
   (handle_name :string)
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   &rest)
 
-(defcfun ("IupSetAttributes" iup-set-attributes) :pointer
+(cffi:defcfun ("IupSetAttributes" iup-set-attributes) :pointer
   (ih :pointer)
   (str :string))
 
-(defcfun ("IupGetAttributes" iup-get-attributes) :string
+(cffi:defcfun ("IupGetAttributes" iup-get-attributes) :string
   (ih :pointer))
 
 ;;--------------------------------------------------------------------------------------
@@ -111,27 +110,27 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetAttribute" iup-get-attribute) :string
+(cffi:defcfun ("IupGetAttribute" iup-get-attribute) :string
   (ih :pointer)
-  (name :string))
+  (name iup-name))
 
-(defcfun ("IupGetInt" iup-get-int) :int
+(cffi:defcfun ("IupGetInt" iup-get-int) :int
   (ih :pointer)
-  (name :string))
+  (name iup-name))
 
-(defcfun ("IupGetInt2" iup-get-int2) :int
+(cffi:defcfun ("IupGetInt2" iup-get-int2) :int
   (ih :pointer)
-  (name :string))
+  (name iup-name))
 
-(defcfun ("IupGetIntInt" iup-get-int-int) :int
+(cffi:defcfun ("IupGetIntInt" iup-get-int-int) :int
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (i1 (:pointer :int))
   (i2 (:pointer :int)))
 
-(defcfun ("IupGetFloat" iup-get-float) :float
+(cffi:defcfun ("IupGetFloat" iup-get-float) :float
   (ih :pointer)
-  (name :string))
+  (name iup-name))
 
 ; double    IupGetDouble(Ihandle* ih, const char* name);
 ; void      IupGetRGB      (Ihandle* ih, const char* name, unsigned char *r, unsigned char *g, unsigned char *b);
@@ -144,19 +143,19 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetAttributeId" iup-get-attribute-id) :string
+(cffi:defcfun ("IupGetAttributeId" iup-get-attribute-id) :string
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int))
 
-(defcfun ("IupGetIntId" iup-get-int-id) :int
+(cffi:defcfun ("IupGetIntId" iup-get-int-id) :int
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int))
 
-(defcfun ("IupGetFloatId" iup-get-float-id) :float
+(cffi:defcfun ("IupGetFloatId" iup-get-float-id) :float
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (id :int))
 
 ; double IupGetDoubleId(Ihandle* ih, const char* name, int id);
@@ -170,21 +169,21 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetAttributeId2" iup-get-attribute-id2) :string
+(cffi:defcfun ("IupGetAttributeId2" iup-get-attribute-id2) :string
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int))
 
-(defcfun ("IupGetIntId2" iup-get-int-id2) :int
+(cffi:defcfun ("IupGetIntId2" iup-get-int-id2) :int
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int))
 
-(defcfun ("IupGetFloatId2" iup-get-float-id2) :float
+(cffi:defcfun ("IupGetFloatId2" iup-get-float-id2) :float
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (lin :int)
   (col :int))
 
@@ -193,27 +192,27 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetGlobal" iup-set-global) :void
-  (name :string)
+(cffi:defcfun ("IupSetGlobal" iup-set-global) :void
+  (name iup-name)
   (value :string))
 
-(defcfun ("IupStoreGlobal" iup-store-global) :void
-  (name :string)
+(cffi:defcfun ("IupStoreGlobal" iup-store-global) :void
+  (name iup-name)
   (value :string))
 
-(defcfun ("IupGetGlobal" iup-get-global) :string
-  (name :string))
+(cffi:defcfun ("IupGetGlobal" iup-get-global) :string
+  (name iup-name))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSetAttributeHandle" iup-set-attribute-handle) :void
+(cffi:defcfun ("IupSetAttributeHandle" set-attribute-handle) :void
   (ih :pointer)
-  (name :string)
+  (name iup-name)
   (ih_named :pointer))
 
-(defcfun ("IupGetAttributeHandle" iup-get-attribute-handle) :pointer
+(cffi:defcfun ("IupGetAttributeHandle" iup-get-attribute-handle) :pointer
   (ih :pointer)
-  (name :string))
+  (name iup-name))
 
 ; void      IupSetAttributeHandleId(Ihandle* ih, const char* name, int id, Ihandle* ih_named);
 ; Ihandle*  IupGetAttributeHandleId(Ihandle* ih, const char* name, int id);
@@ -237,24 +236,27 @@
 
 (defgeneric (setf attribute) (value ih name &rest ids))
 
+(defmethod (setf attribute) (value ih name &rest ids)
+  (ecase (length ids)
+    (0 (set-attribute ih name value))
+    (1 (apply #'set-attribute-id ih name value ids))
+    (2 (apply #'set-attribute-id2 ih name value ids))))
+
 (defmethod (setf attribute) ((value string) ih name &rest ids)
-  (let ((n (format nil "~:@(~A~)" name)))
-    (ecase (length ids)
-      (0 (set-str-attribute ih n value))
-      (1 (apply #'set-str-attribute-id ih n value ids))
-      (2 (apply #'set-str-attribute-id2 ih n value ids)))))
+  (ecase (length ids)
+    (0 (set-str-attribute ih name value))
+    (1 (apply #'set-str-attribute-id ih name value ids))
+    (2 (apply #'set-str-attribute-id2 ih name value ids))))
 
 (defmethod (setf attribute) ((value integer) ih name &rest ids)
-  (let ((n (format nil "~:@(~A~)" name)))
-    (ecase (length ids)
-      (0 (set-int-attribute ih n value))
-      (1 (apply #'set-int-attribute-id ih n value ids))
-      (2 (apply #'set-int-attribute-id2 ih n value ids)))))
+  (ecase (length ids)
+    (0 (set-int-attribute ih name value))
+    (1 (apply #'set-int-attribute-id ih name value ids))
+    (2 (apply #'set-int-attribute-id2 ih name value ids))))
 
 (defmethod (setf attribute) ((value float) ih name &rest ids)
-  (let ((n (format nil "~:@(~A~)" name)))
-    (ecase (length ids)
-      (0 (set-double-attribute ih n value))
-      (1 (apply #'set-double-attribute-id ih n value ids))
-      (2 (apply #'set-double-attribute-id2 ih n value ids)))))
+  (ecase (length ids)
+    (0 (set-double-attribute ih name value))
+    (1 (apply #'set-double-attribute-id ih name value ids))
+    (2 (apply #'set-double-attribute-id2 ih name value ids))))
 

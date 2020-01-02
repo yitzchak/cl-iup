@@ -2,24 +2,24 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupImage" iup-image) :pointer
+(cffi:defcfun ("IupImage" iup-image) :pointer
   (width :int)
   (height :int)
   (pixmap :pointer))
 
-(defcfun ("IupImageRGB" iup-image-rgb) :pointer
+(cffi:defcfun ("IupImageRGB" iup-image-rgb) :pointer
   (width :int)
   (height :int)
   (pixmap :pointer))
 
-(defcfun ("IupImageRGBA" iup-image-rgba) :pointer
+(cffi:defcfun ("IupImageRGBA" iup-image-rgba) :pointer
   (width :int)
   (height :int)
   (pixmap :pointer))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupSaveImageAsText" iup-save-image-as-text) :int
+(cffi:defcfun ("IupSaveImageAsText" iup-save-image-as-text) :int
   (ih :pointer)
   (file_name :string)
   (format :string)

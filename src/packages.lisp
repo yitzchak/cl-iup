@@ -1,7 +1,7 @@
 ;;;; package.lisp
 
 (defpackage #:cl-iup
-  (:use #:cl #:cffi #:iterate)
+  (:use #:cl #:iterate)
   (:nicknames :iup)
   (:export
    ;;=============================================
@@ -85,7 +85,7 @@
    #:iup-get-int-int
    #:iup-get-float
    #:iup-setf-attribute
-   #:iup-reset-attribute
+   #:reset-attribute
    #:iup-get-all-attributes
    #:iup-set-att
 
@@ -122,7 +122,7 @@
    #:iup-get-all-dialogs
    #:iup-get-name
 
-   #:iup-set-attribute-handle
+   #:set-attribute-handle
    #:iup-get-attribute-handle
 
    #:iup-get-class-name
@@ -168,11 +168,10 @@
    #:iup-image-rgb
    #:iup-image-rgba
 
-   #:iup-item
-   #:iup-submenu
-   #:iup-separator
-   #:iup-menu
-   #:iup-menuv
+   #:item
+   #:submenu
+   #:separator
+   #:menu
 
    #:button
    #:iup-canvas
@@ -180,7 +179,7 @@
    #:iup-user
    #:label
    #:iup-list
-   #:iup-text
+   #:text
    #:iup-multi-line
    #:iup-toggle
    #:iup-timer

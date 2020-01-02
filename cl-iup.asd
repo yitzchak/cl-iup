@@ -45,5 +45,7 @@
          (:file "example2-2")
          (:file "example2-3")
          (:file "example2-4")
-         (:file "example2-5")))))
+         (:file "example2-5")
+         (:file "example3-1")
+         (:file "example3-2")))))
 

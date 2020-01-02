@@ -2,56 +2,59 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupButton" %button) :pointer
+(cffi:defcfun ("IupButton" %button) :pointer
   (title :string)
   (action :string))
 
-(defun button (title &optional (action (null-pointer)))
+(defun button (title &optional (action (cffi:null-pointer)))
   (%button title action))
 
-(defcfun ("IupFlatButton" iup-flat-button) :pointer
+(cffi:defcfun ("IupFlatButton" iup-flat-button) :pointer
   (title :string))
 
-(defcfun ("IupFlatToggle" iup-flat-toggle) :pointer
+(cffi:defcfun ("IupFlatToggle" iup-flat-toggle) :pointer
   (title :string))
 
-(defcfun ("IupDropButton" iup-drop-button) :pointer
+(cffi:defcfun ("IupDropButton" iup-drop-button) :pointer
   (child :pointer))
 
-(defcfun ("IupFlatLabel" iup-flat-label) :pointer
+(cffi:defcfun ("IupFlatLabel" iup-flat-label) :pointer
   (title :string))
 
-(defcfun ("IupFlatSeparator" iup-flat-separator) :pointer)
+(cffi:defcfun ("IupFlatSeparator" iup-flat-separator) :pointer)
 
-(defcfun ("IupCanvas" iup-canvas) :pointer
+(cffi:defcfun ("IupCanvas" iup-canvas) :pointer
   (action :string))
 
-(defcfun ("IupDialog" dialog) :pointer
+(cffi:defcfun ("IupDialog" dialog) :pointer
   (child :pointer))
 
-(defcfun ("IupUser" iup-user) :pointer)
+(cffi:defcfun ("IupUser" iup-user) :pointer)
 
-(defcfun ("IupLabel" label) :pointer
+(cffi:defcfun ("IupLabel" label) :pointer
   (title :string))
 
-(defcfun ("IupList" iup-list) :pointer
+(cffi:defcfun ("IupList" iup-list) :pointer
   (action :string))
 
-(defcfun ("IupText" iup-text) :pointer
+(cffi:defcfun ("IupText" %text) :pointer
   (action :string))
 
-(defcfun ("IupMultiLine" iup-multi-line) :pointer
+(defun text (&optional (action (cffi:null-pointer)))
+  (%text action))
+
+(cffi:defcfun ("IupMultiLine" iup-multi-line) :pointer
   (action :string))
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupTextConvertLinColToPos" iup-text-convert-lin-col-to-pos) :void
+(cffi:defcfun ("IupTextConvertLinColToPos" iup-text-convert-lin-col-to-pos) :void
   (ih :pointer)
   (lin :int)
   (col :int)
   (pos :pointer))
 
-(defcfun ("IupTextConvertPosToLinCol" iup-text-convert-pos-to-lin-col) :void
+(cffi:defcfun ("IupTextConvertPosToLinCol" iup-text-convert-pos-to-lin-col) :void
   (ih :pointer)
   (pos :int)
   (lin :pointer)
@@ -59,42 +62,42 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupTreeSetUserId" iup-tree-set-user-id) :int
+(cffi:defcfun ("IupTreeSetUserId" iup-tree-set-user-id) :int
   (ih :pointer)
   (id :int)
   (userid :pointer))
 
-(defcfun ("IupTreeGetUserId" iup-tree-get-user-id) :pointer
+(cffi:defcfun ("IupTreeGetUserId" iup-tree-get-user-id) :pointer
   (ih :pointer)
   (id :int))
 
-(defcfun ("IupTreeGetId" iup-tree-get-id) :int
+(cffi:defcfun ("IupTreeGetId" iup-tree-get-id) :int
   (ih :pointer)
   (userid :pointer))
 
-(defcfun ("IupTreeSetAttributeHandle" iup-tree-set-attribute-handle) :void
+(cffi:defcfun ("IupTreeSetAttributeHandle" iup-tree-set-attribute-handle) :void
   (ih :pointer)
   (a :string)
   (id :int)
   (ih_named :pointer))
 
 
-(defcfun ("IupToggle" iup-toggle) :pointer
+(cffi:defcfun ("IupToggle" iup-toggle) :pointer
   (title :string)
   (action :string))
 
-(defcfun ("IupTimer" iup-timer) :pointer)
+(cffi:defcfun ("IupTimer" iup-timer) :pointer)
 
-(defcfun ("IupClipboard" iup-clipboard) :pointer)
+(cffi:defcfun ("IupClipboard" iup-clipboard) :pointer)
 
-(defcfun ("IupProgressBar" iup-progress-bar) :pointer)
+(cffi:defcfun ("IupProgressBar" iup-progress-bar) :pointer)
 
-(defcfun ("IupVal" iup-val) :pointer
+(cffi:defcfun ("IupVal" iup-val) :pointer
   (type :string))
 
-(defcfun ("IupTree" iup-tree) :pointer)
+(cffi:defcfun ("IupTree" iup-tree) :pointer)
 
-(defcfun ("IupLink" iup-link) :pointer
+(cffi:defcfun ("IupLink" iup-link) :pointer
   (url :string)
   (title :string))
 

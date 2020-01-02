@@ -2,21 +2,27 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupItem" iup-item) :pointer
+(cffi:defcfun ("IupItem" %item) :pointer
   (title :string)
   (action :string))
 
-(defcfun ("IupSubmenu" iup-submenu) :pointer
+(defun item (title &optional (action (cffi:null-pointer)))
+  (%item title action))
+
+(cffi:defcfun ("IupSubmenu" submenu) :pointer
   (title :string)
   (child :pointer))
 
-(defcfun ("IupSeparator" iup-separator) :pointer)
+(cffi:defcfun ("IupSeparator" separator) :pointer)
 
-(defcfun ("IupMenu" iup-menu) :pointer
-  (child :pointer)
-  &rest)
+;(cffi:defcfun ("IupMenu" menu) :pointer
+;  (child :pointer)
+;  &rest)
 
-(defcfun ("IupMenuv" iup-menuv) :pointer
+(cffi:defcfun ("IupMenuv" %menuv) :pointer
   (children :pointer))
 
+(defun menu (&rest children)
+  (with-ihandle-sequence (a children)
+    (%menuv a)))
 

@@ -2,22 +2,22 @@
 
 ;;--------------------------------------------------------------------------------------
 
-(defcfun ("IupGetHandle" iup-get-handle) :pointer
+(cffi:defcfun ("IupGetHandle" iup-get-handle) :pointer
   (name :string))
 
-(defcfun ("IupSetHandle" iup-set-handle) :pointer
+(cffi:defcfun ("IupSetHandle" iup-set-handle) :pointer
   (name :string)
   (ih :pointer))
 
-(defcfun ("IupGetAllNames" iup-get-all-names) :int
+(cffi:defcfun ("IupGetAllNames" iup-get-all-names) :int
   (names :pointer)
   (n :int))
 
-(defcfun ("IupGetAllDialogs" iup-get-all-dialogs) :int
+(cffi:defcfun ("IupGetAllDialogs" iup-get-all-dialogs) :int
   (names :pointer)
   (n :int))
 
-(defcfun ("IupGetName" iup-get-name) :string
+(cffi:defcfun ("IupGetName" iup-get-name) :string
   (ih :pointer))
 
 
